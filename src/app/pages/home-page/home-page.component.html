@@ -1,0 +1,15 @@
+<section class="home-page w-full min-h-screen bg-neutral-900 flex flex-col items-center justify-center gap-20">
+    <div class="w-full flex flex-col gap-20">
+        <app-project-card
+        *ngFor="let project of projects"
+        [title]="project.title"
+        [description]="project.description"
+        [image]="project.image"
+        [background]="project.background"
+        [technos]="project.technos"
+        [fontClass]="project.fontClass"
+        [textColor]="project.textColor">
+        </app-project-card>
+    </div>
+</section>
+  

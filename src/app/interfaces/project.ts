@@ -5,4 +5,6 @@ export interface Project {
     image: string;
     background: string;
     technos: string[];
+    fontClass: string;
+    textColor: string;
 }
