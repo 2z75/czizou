@@ -2,4 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'PlayStation';
+    src: url('/assets/fonts/psFont.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+/* Global reset complet */
+* {
+    @apply box-border p-0 m-0;
+}
+html, body, app-root {
+    @apply w-screen h-screen m-0 p-0 overflow-hidden;
+}
+
