@@ -5,8 +5,8 @@ export const projectData: Project[] = [
     {
         id: 1,
         title: 'CZIZOU',
-        description: 'Site personnel résumant mes derniers projets',
-        image: 'assets/tn-img/tnCzizou.png',
+        description: 'Site personnel',
+        image: 'assets/tn-img/tnCz.png',
         background: 'assets/bg-img/cZizou.png',
         technos: ['Angular', 'GSAP', 'Tailwind', 'ThreeJS'],
         fontClass: 'font-playstation',
@@ -26,7 +26,7 @@ export const projectData: Project[] = [
     {
         id: 3,
         title: 'Arekipa',
-        description: 'Refonte visuelle du site Arekipa',
+        description: 'Refonte du site Arekipa',
         image: 'assets/tn-img/tnArekipa.png',
         background: 'assets/bg-img/arekipa.png',
         technos: ['Wordpress', 'Javascript', 'PHP', 'MySQL'],

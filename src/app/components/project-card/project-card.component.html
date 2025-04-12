@@ -1,34 +1,51 @@
-<section class="w-full h-screen flex items-center justify-center bg-cover bg-center"[ngStyle]="{ 'background-image': 'url(' + background + ')' }">
-    <div class="w-full h-full flex flex-col justify-between px-20 py-12">
+<section class="w-full h-screen flex flex-col justify-between px-20 py-12 bg-cover bg-center" [ngStyle]="{ 'background-image': 'url(' + currentProject.background + ')' }">
 
-        <!-- Haut : Miniature seule -->
-        <div class="mt-6 mb-10 w-48 h-48 bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-            <img [src]="image" alt="Miniature" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/30 backdrop-blur-sm z-0"></div>
+
+    <!-- Container -->
+    <div class="relative z-10 flex flex-col justify-between h-full">
+        <!-- Carousel -->
+        <div class="relative w-full h-48 mb-12 overflow-visible">
+            <div class="relative w-full h-full">
+                <div #carouselList class="absolute top-[88px] h-full flex gap-3">
+
+                    <div *ngFor="let project of projects; let i = index" class="transition-all duration-500 cursor-pointer rounded-xl shadow-lg overflow-hidden"
+                    [ngClass]="{
+                        'w-36 h-36 scale-110 border-4 border-white z-10': i === currentProjectIndex,
+                        'w-24 h-24 opacity-80 z-0': i !== currentProjectIndex
+                    }"
+                    (click)="selectProject(i)"
+                    >
+                    <img
+                        [src]="project.image"
+                        alt="{{ project.title }}"
+                        class="w-full h-full object-cover"
+                    />
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Milieu : Titre + Description + Bouton -->
-        <div class="flex flex-col gap-4">
-            <!-- Titre -->
-            <h1 [ngClass]="[fontClass, textColor, 'text-6xl', 'font-bold', 'tracking-wide']">
-                {{ title }}
-            </h1>
 
-            <!-- Description -->
-            <p [ngClass]="['font-montserrat', textColor, 'text-lg', 'opacity-80', 'tracking-wide']">
-                {{ description }}
+        <!-- Titre & Description -->
+        <div class="flex flex-col gap-4">
+            <h1 [ngClass]="[currentProject.fontClass, currentProject.textColor, 'text-6xl', 'font-bold', 'tracking-wide']">
+                {{ currentProject.title }}
+            </h1>
+            <p [ngClass]="['font-montserrat', currentProject.textColor, 'text-lg', 'opacity-80', 'tracking-wide']">
+                {{ currentProject.description }}
             </p>
 
-            <!-- Bas : Bouton + Techno -->
+            <!-- Bouton & Technos -->
             <div class="flex justify-between items-center w-full mt-6">
-                <!-- Bouton -->
+            <!-- Bouton -->
                 <button class="w-72 py-5 bg-black/60 text-white text-xl font-semibold rounded-full backdrop-blur-sm hover:bg-white/20 hover:text-black transition">
                     Voir Plus
                 </button>
-
-                <!-- Bloc techno -->
+            <!-- Bloc techno -->
                 <div class="bg-black/50 text-white px-10 py-6 rounded-xl shadow-lg text-lg">
                     <p class="opacity-60 text-base mb-1">Technologies</p>
                     <p class="font-semibold text-2xl">
-                        {{ technos.join(', ') }}
+                        {{ currentProject.technos.join(', ') }}
                     </p>
                 </div>
             </div>
