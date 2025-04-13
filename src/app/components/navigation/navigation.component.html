@@ -1,20 +1,7 @@
 <div class="w-full flex justify-center overflow-hidden">
-    <div
-      class="flex gap-6 transition-transform duration-500 ease-in-out"
-      [ngStyle]="{
-        transform: 'translateX(' + calculateTranslateX() + 'px)'
-      }"
-    >
-      <ng-container *ngFor="let project of projects; let i = index">
-        <img
-          [src]="project.image"
-          (click)="selectProject(i)"
-          [ngClass]="[
-            'object-cover rounded-xl cursor-pointer transition-all duration-300',
-            i === currentProjectIndex ? 'w-40 h-40 scale-110 ring-4 ring-white z-10' : 'w-32 h-32 opacity-80'
-          ]"
-        />
-      </ng-container>
+    <div class="flex gap-6 transition-transform duration-500 ease-in-out" [ngStyle]="{ transform: 'translateX(' + calculateTranslateX() + 'px)' }">
+        <ng-container *ngFor="let project of projects; let i = index">
+            <img [src]="project.image" (click)="selectProject(i)" [ngClass]="['object-cover rounded-xl cursor-pointer transition-all duration-300', i === currentProjectIndex ? 'w-40 h-40 scale-110 ring-4 ring-white z-10' : 'w-32 h-32 opacity-80']"/>
+        </ng-container>
     </div>
-  </div>
-  
+</div>

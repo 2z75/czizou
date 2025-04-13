@@ -11,6 +11,8 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 
 /* Global reset complet */
 * {
@@ -24,8 +26,9 @@ html, body, app-root {
 .scrollbar-hide {
     -ms-overflow-style: none; /* IE/Edge */
     scrollbar-width: none; /* Firefox */
-  }
-  .scrollbar-hide::-webkit-scrollbar {
+}
+
+.scrollbar-hide::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
-  }
-  
+}
+

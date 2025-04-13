@@ -5,17 +5,18 @@ import { ProjectCardComponent } from '../../components/project-card/project-card
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-home-page',
-  standalone: true,
-  imports: [CommonModule, ProjectCardComponent],
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.scss',
+    selector: 'app-home-page',
+    standalone: true,
+    imports: [CommonModule, ProjectCardComponent],
+    templateUrl: './home-page.component.html',
+    styleUrl: './home-page.component.scss',
 })
-export class HomePageComponent {
-  projects: Project[] = projectData;
-  currentProjectIndex = 0;
 
-  onProjectSelected(index: number) {
-    this.currentProjectIndex = index;
-  }
+export class HomePageComponent {
+    projects: Project[] = projectData;
+    currentProjectIndex = 0;
+
+    onProjectSelected(index: number) {
+        this.currentProjectIndex = index;
+    }
 }
