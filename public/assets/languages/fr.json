@@ -1,0 +1,27 @@
+{
+    "project": {
+        "button": "Voir Plus"
+    },
+    
+    "projects": {
+        "CZIZOU": {
+            "description": "Site personnel"
+        },
+        "TrIpGather": {
+            "description": "Site communautaire de compagnons de voyage"
+        },
+        "Arekipa": {
+            "description": "Refonte du site Arekipa"
+        },
+        "{Origins/Digital}": {
+            "description": "Plateforme video pour apprendre le dev"
+        }
+    },
+
+    "navbar": {
+        "projects": "Projets",
+        "about": "À propos",
+        "contact": "Me contacter",
+        "currentLang": "Langue actuelle"
+    }
+}

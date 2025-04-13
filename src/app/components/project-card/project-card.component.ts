@@ -1,13 +1,14 @@
 import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from '../../interfaces/project';
+import { TranslateModule } from '@ngx-translate/core';
 import gsap from 'gsap';
 
 
 @Component({
     selector: 'app-project-card',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, TranslateModule ],
     templateUrl: './project-card.component.html',
     styleUrls: ['./project-card.component.scss']
 })
@@ -51,7 +52,6 @@ export class ProjectCardComponent implements AfterViewInit, OnChanges {
             duration: 0.6,
             ease: 'power2.out',
         });
-        
-
     }
+
 }

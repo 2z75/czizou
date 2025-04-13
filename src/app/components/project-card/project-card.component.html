@@ -1,6 +1,6 @@
 <section class="w-full h-screen flex flex-col justify-between px-20 py-12 bg-cover bg-center" [ngStyle]="{ 'background-image': 'url(' + currentProject.background + ')' }">
 
-    <div class="absolute inset-0 bg-black/30 backdrop-blur-sm z-0"></div>
+    <div class="absolute inset-0 bg-black/30"></div>
 
     <!-- Container -->
     <div class="relative z-10 flex flex-col justify-between h-full">
@@ -31,19 +31,19 @@
             <h1 [ngClass]="[currentProject.fontClass, currentProject.textColor, 'text-6xl', 'font-bold', 'tracking-wide']">
                 {{ currentProject.title }}
             </h1>
-            <p [ngClass]="['font-montserrat', currentProject.textColor, 'text-lg', 'opacity-80', 'tracking-wide']">
-                {{ currentProject.description }}
+            <p [ngClass]="['sans', currentProject.textColor, 'text-lg', 'opacity-80', 'tracking-wide']">
+                {{ currentProject.description | translate }}
             </p>
 
             <!-- Bouton & Technos -->
             <div class="flex justify-between items-center w-full mt-6">
             <!-- Bouton -->
-                <button class="w-72 py-5 bg-black/60 text-white text-xl font-semibold rounded-full backdrop-blur-sm hover:bg-white/20 hover:text-black transition">
-                    Voir Plus
+                <button class="w-72 py-5 bg-black/50 text-white text-xl font-semibold rounded-full backdrop-blur-sm hover:bg-white/20 hover:text-black transition">
+                    {{ 'project.button' | translate }}
                 </button>
             <!-- Bloc techno -->
                 <div class="bg-black/50 text-white px-10 py-6 rounded-xl shadow-lg text-lg">
-                    <p class="opacity-60 text-base mb-1">Technologies</p>
+                    <p class="opacity-60 text-base mb-1">Technos</p>
                     <p class="font-semibold text-2xl">
                         {{ currentProject.technos.join(', ') }}
                     </p>

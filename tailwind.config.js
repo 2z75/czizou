@@ -8,6 +8,7 @@ module.exports = {
             fontFamily: {
                 montserrat: ['Montserrat', 'sans-serif'],
                 playstation: ['PlayStation', 'sans-serif'],
+                sans: ['Open Sans', 'sans-serif'],
             },
         },
         plugins: [],
