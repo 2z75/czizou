@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RouterLink, RouterModule } from '@angular/router';
+import { RouterLink, RouterModule, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-navbar',
     standalone: true,
-    imports: [RouterLink, RouterModule, TranslateModule],
+    imports: [RouterLink, RouterModule, TranslateModule, CommonModule],
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss']
 })
@@ -16,10 +17,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private intervalId: any;
     private timeoutId: any;
 
-    constructor(public translate: TranslateService) {}
 
+    constructor(public translate: TranslateService, private router: Router) {}
+
+    // Traduction
     ngOnInit(): void {
-        // Détection initiale de langue (ou fallback en 'fr')
         this.currentLang = this.translate.currentLang || this.translate.getBrowserLang() || 'fr';
         this.translate.use(this.currentLang);
 
@@ -37,6 +39,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.translate.use(this.currentLang);
     }
 
+    //Heure
     private updateTime(): void {
         const now = new Date();
         this.currentTime = now.toLocaleTimeString([], {
@@ -54,4 +57,29 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.intervalId = setInterval(() => this.updateTime(), 60000);
         }, secondsUntilNextMinute * 1000);
     }
+
+
+
+    // Sous menu
+    isMenuOpen = false;
+
+    toggleMenu(): void {
+        this.isMenuOpen = !this.isMenuOpen;
+        console.log("toggle menu")
+    }
+
+    navigateTo(route: string): void {
+        this.isMenuOpen = false;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.router.navigate([route]);
+    }
+
+    profileMenu = [
+        { icon: '👤', label: 'À propos', route: '/about' },
+        { icon: '🧠', label: 'Technologies', route: '/technos' },
+        { icon: '🎯', label: 'Mes projets', route: '/' },
+        { icon: '🎮', label: 'Jouer avec moi', route: '/play' },
+        { icon: '✉️', label: 'Me contacter', route: '/contact' }
+      ];
+      
 }
