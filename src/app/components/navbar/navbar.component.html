@@ -10,15 +10,15 @@
     </nav>
 
     <!-- Droite -->
-    <div class="flex gap-8 items-center text-xl">
+    <div class="relative flex gap-8 items-center text-xl">
+        <!-- Langue -->
         <button (click)="switchLanguage()" class="opacity-70 hover:opacity-100 transition">
             {{ currentLang === 'fr' ? 'ENG' : 'FR' }}
         </button>
-
+        <!-- CV -->
         <a href="/assets/cv_cz.pdf" download aria-label="Download CV" class="opacity-70 hover:opacity-100 transition">
             <img src="assets/icons/download.svg" alt="Download CV" class="w-5 h-5" />
         </a>
-
 
         <!-- Profil -->
         <div class="relative w-12 h-12">
@@ -28,64 +28,38 @@
                 class="w-full h-full object-cover object-top rounded-full border-2 border-white cursor-pointer"
                 (click)="toggleMenu()"
             />
-
-<!-- Sous-menu profil -->
-<!-- Sous-menu profil -->
-<div
-  *ngIf="isMenuOpen"
-  class="absolute top-14 right-0 w-60 text-white rounded-md shadow-lg z-50"
-  style="background: linear-gradient(to top right, rgba(38,43,44,1), rgba(23,25,29,1));"
->
-  <!-- En-tête -->
-  <span class="text-left text-sm font-medium px-4 py-2 block">Zinedine Chader</span>
-
-  <!-- Boutons du menu -->
-  <button
-  *ngFor="let item of profileMenu"
-  class="group w-full flex items-center hover:border-white border border-transparent transition-colors duration-200"
-  (click)="navigateTo(item.route)"
->
-  <!-- Bloc emoji -->
-  <span class="w-10 flex justify-center items-center text-lg py-3">
-    {{ item.icon }}
-  </span>
-
-  <!-- Bloc texte -->
-  <span class="flex-1 text-left py-3 pr-4 relative overflow-hidden">
-    <span class="block">{{ item.label }}</span>
-    <span class="absolute left-0 right-0 bottom-0 h-[1px] bg-[#2c3033]"></span>
-  </span>
-</button>
-
-
-
-
-  <!-- Déconnexion -->
-  <button
-    class="w-full flex items-center text-red-500 hover:border-white border border-transparent transition-colors duration-200"
-    (click)="navigateTo('/login')"
-  >
-    <span class="w-10 flex justify-center items-center text-lg py-3">🚪</span>
-    <span class="flex-1 text-left pr-4 py-3 border-b border-[#2c3033]">Déconnexion</span>
-  </button>
-</div>
-
-
-              
-              
-              
-          
-
-
-
-
-
             <!-- Online -->
             <span class="absolute bottom-0 right-0 flex items-center justify-center">
                 <span class="absolute w-3 h-3 bg-green-500 rounded-full slow-ping opacity-75"></span>
                 <span class="relative w-3 h-3 bg-green-500 rounded-full"></span>
             </span>
         </div>
+
+        <!-- Menu déroulant -->
+        <nav
+            *ngIf="isMenuOpen"
+            class="absolute top-16 right-0 w-64 text-white rounded-md shadow-lg z-50 pb-2"
+            style="background: radial-gradient(circle at 5% 100%, rgba(38,43,44,0.6), rgb(25,29,31,1) 60%); backdrop-filter: blur(6px);"
+        >
+        <!-- En-tête -->
+            <div class="flex items-center justify-start px-4 py-2 text-sm font-light">
+                <span>Zinedine Chader</span>
+                <img src="assets/icons/plus.svg" alt="PS Plus" class="w-4 h-4 ml-2" />
+            </div>
+            <!-- Menu -->
+            <ul class="text-sm font-light">
+                <li *ngFor="let item of profileMenu" class="border-b border-white/30 last:border-none">
+                    <button (click)="navigateTo(item.route)" class="w-full flex items-center px-4 py-3 border border-transparent hover:border-white transition-colors">
+                        <span class="w-10 flex justify-center items-center">
+                            <img [src]="item.icon" alt="{{ item.label }}" class="w-5 h-5 object-contain" />
+                        </span>
+                        <span class="flex-1 text-left tracking-wide">
+                            {{ item.label }}
+                        </span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
 
         <!-- Heure -->
         <span class="ml-2 opacity-70 hover:opacity-100 transition cursor-pointer">{{ currentTime }}</span>
