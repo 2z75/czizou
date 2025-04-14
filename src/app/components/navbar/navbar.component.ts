@@ -75,11 +75,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     profileMenu = [
-        { icon: '👤', label: 'À propos', route: '/about' },
-        { icon: '🧠', label: 'Technologies', route: '/technos' },
-        { icon: '🎯', label: 'Mes projets', route: '/' },
-        { icon: '🎮', label: 'Jouer avec moi', route: '/play' },
-        { icon: '✉️', label: 'Me contacter', route: '/contact' }
-      ];
-      
+        { icon: 'assets/icons/message.svg', label: 'Me contacter', route: '/contact' },
+        { icon: 'assets/icons/controller.svg', label: 'Jouer avec moi', route: '/play' },
+        { icon: 'assets/icons/settings.svg', label: 'Thème', route: '/contact' },
+        { icon: 'assets/icons/logout.svg', label: 'Déconnexion', route: '/login' }, 
+    ];
+
 }
