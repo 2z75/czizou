@@ -7,4 +7,5 @@ export interface Project {
     technos: string[];
     fontClass: string;
     textColor: string;
+    link: string;
 }
