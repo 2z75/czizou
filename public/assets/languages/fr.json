@@ -22,7 +22,10 @@
         "projects": "Projets",
         "about": "À propos",
         "contact": "Me contacter",
-        "currentLang": "Langue actuelle"
+        "currentLang": "Langue actuelle",
+        "play": "Venir Jouer",
+        "switchProfile": "Changer de profil",
+        "logout": "Déconnexion"
     },
 
     "about": {
