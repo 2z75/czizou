@@ -2,77 +2,45 @@
 
     <!-- Bloc profil -->
     <div class="flex items-start justify-between w-full">
-      <!-- Gauche : avatar + pseudo -->
-      <div class="flex gap-6 items-center">
-        <!-- Avatar -->
-<!-- Avatar -->
-<!-- Avatar -->
-<!-- Avatar -->
-<!-- Avatar -->
-<div class="relative w-20 h-20">
-    <img
-      src="assets/zizou/zizou.jpg"
-      alt="Photo"
-      class="w-full h-full object-cover object-top rounded-full border-2 border-white"
-    />
-    <!-- Online (fixe, collé à la bordure) -->
-    <span class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border border-black"></span>
-  </div>
-  
-  
-  
-  
-  
-        <!-- Nom + langues -->
-        <div>
-          <h2 class="text-2xl font-semibold flex items-center">
-            Zinedine Chader
-            <img src="assets/icons/plus.svg" alt="PS Plus" class="w-5 h-5 ml-2" />
-          </h2>
-          <div class="text-sm opacity-70 italic mt-1">
-            <span>{{ 'about.subtext' | translate }}</span>
-          </div>
+        <div class="flex gap-6 items-center">
+            <!-- Photo -->
+            <div class="relative w-20 h-20">
+                <img src="assets/zizou/zizou.jpg" alt="Photo" class="w-full h-full object-cover object-top rounded-full border border-white"/>
+                <span class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border border-black"></span>
+            </div>
+            <div>
+                <h2 class="text-2xl font-semibold flex items-center">
+                    Zinedine Chader
+                    <img src="assets/icons/plus.svg" alt="PS Plus" class="w-5 h-5 ml-2" />
+                </h2>
+                <div class="text-sm opacity-70 italic mt-1">
+                    <span>{{ 'about.subtext' | translate }}</span>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  
+
     <!-- Onglets -->
     <nav class="flex gap-12 text-lg text-white/70 pb-2">
-      <button
-        *ngFor="let tab of tabs"
-        (click)="currentTab = tab.key"
-        [ngClass]="{
-          'text-white': currentTab === tab.key,
-          'hover:text-white': true,
-          'transition': true
-        }"
-      >
-        {{ tab.label | translate }}
-      </button>
+        <button *ngFor="let tab of tabs" (click)="currentTab = tab.key" [ngClass]="{ 'text-white': currentTab === tab.key, 'hover:text-white': true, 'transition': true }">
+            {{ tab.label | translate }}
+        </button>
     </nav>
-  
-    <!-- Contenu -->
+
     <div [ngSwitch]="currentTab" class="mt-6">
-  
-      <!-- Intro -->
-      <div *ngSwitchCase="'intro'" class="flex justify-center items-center text-center min-h-[200px]">
-        <p class="max-w-xl text-lg text-white/80 leading-relaxed">
-          {{ 'about.introText' | translate }}
-        </p>
-      </div>
-  
-      <!-- Parcours -->
-      <div *ngSwitchCase="'parcours'" class="grid grid-cols-3 gap-6">
-        <div
-          *ngFor="let job of parcours"
-          class="bg-white/5 p-6 rounded-lg flex flex-col items-center text-center gap-2 transition-all duration-300 hover:border-4 hover:border-white hover:scale-105 hover:z-10 cursor-pointer"
-        >
-          <img [src]="job.logo" [alt]="job.nom" class="w-16 h-16 object-contain" />
-          <p class="text-white text-lg font-semibold">{{ job.nom }}</p>
-          <p class="text-white/60 text-sm">{{ job.periode }}</p>
+        <!-- Intro -->
+        <div *ngSwitchCase="'intro'" class="flex justify-center items-center text-center min-h-[200px]">
+            <p class="max-w-xl text-lg text-white/80 leading-relaxed">
+                {{ 'about.introText' | translate }}
+            </p>
         </div>
-      </div>
-  
+        <!-- Parcours -->
+        <div *ngSwitchCase="'parcours'" class="grid grid-cols-3 gap-6">
+            <div *ngFor="let job of parcours" class="bg-white/5 p-6 rounded-lg flex flex-col items-center text-center gap-2 transition-all duration-300 hover:border-4 hover:border-white hover:scale-105 hover:z-10 cursor-pointer">
+                <img [src]="job.logo" [alt]="job.nom" class="w-16 h-16 object-contain" />
+                <p class="text-white text-lg font-semibold">{{ job.nom }}</p>
+                <p class="text-white/60 text-sm">{{ job.periode }}</p>
+            </div>
+        </div>
     </div>
-  </section>
-  
+</section>
