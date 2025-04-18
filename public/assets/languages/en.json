@@ -21,7 +21,10 @@
         "projects": "Projects",
         "about": "About",
         "contact": "Contact Me",
-        "currentLang": "Current Language"
+        "currentLang": "Current Language",
+        "play": "Play with Me",
+        "switchProfile": "Switch Profile",
+        "logout": "Log Out"
     },
 
     

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { RouterLink, RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private timeoutId: any;
 
 
-    constructor(public translate: TranslateService, private router: Router) {}
+    constructor(public translate: TranslateService, private router: Router, ) {}
 
     // Traduction
     ngOnInit(): void {
@@ -38,6 +38,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.currentLang = this.currentLang === 'fr' ? 'en' : 'fr';
         this.translate.use(this.currentLang);
     }
+
 
     //Heure
     private updateTime(): void {
@@ -59,8 +60,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
 
-
     // Sous menu
+    profileMenu = [
+        { icon: 'assets/icons/message.svg', label: 'navbar.contact', route: '/contact' },
+        { icon: 'assets/icons/controller.svg', label: 'navbar.play', route: '/play' },
+        { icon: 'assets/icons/player.svg', label: 'navbar.switchProfile', route: null, disabled: true },
+        { icon: 'assets/icons/logout.svg', label: 'navbar.logout', route: '/login' },
+    ];
+
     isMenuOpen = false;
 
     toggleMenu(): void {
@@ -74,11 +81,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.router.navigate([route]);
     }
 
-    profileMenu = [
-        { icon: 'assets/icons/message.svg', label: 'Me contacter', route: '/contact' },
-        { icon: 'assets/icons/controller.svg', label: 'Jouer avec moi', route: '/play' },
-        { icon: 'assets/icons/settings.svg', label: 'Thème', route: '/contact' },
-        { icon: 'assets/icons/logout.svg', label: 'Déconnexion', route: '/login' }, 
-    ];
+    @HostListener('document:click', ['$event'])
+    onDocumentClick(event: MouseEvent): void {
+        const target = event.target as HTMLElement;
 
+        if (!target.closest('.profile-avatar') && !target.closest('.profile-menu')) {
+            this.isMenuOpen = false;
+        }
+    }
 }
