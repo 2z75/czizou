@@ -19,7 +19,7 @@ export const projectData: Project[] = [
         description: 'projects.TrIpGather.description',
         image: 'assets/tn-img/tnTg.png',
         background: 'assets/bg-img/tripGather.png',
-        technos: ['Java(Spring)', 'Angular', 'MySQL', 'Docker'],
+        technos: ['Java', 'Angular', 'MySQL', 'Docker'],
         fontClass: 'font-montserrat',
         textColor: 'text-white',
         link: 'https://github.com/Onderito/tripgather-back.git'
@@ -42,7 +42,7 @@ export const projectData: Project[] = [
         description: 'projects.{Origins/Digital}.description',
         image: 'assets/tn-img/tnOd.png',
         background: 'assets/bg-img/originsDigital.png',
-        technos: ['PHP(Symfony)', 'JavaScript', 'MySQL'],
+        technos: ['Symfony', 'JavaScript', 'MySQL'],
         fontClass: 'font-montserrat',
         textColor: 'text-white',
         link: 'https://github.com/WildCodeSchool-2023-09/php-paris-p3-originsdigital.git'
