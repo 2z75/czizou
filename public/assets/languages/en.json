@@ -22,5 +22,15 @@
         "about": "About",
         "contact": "Contact Me",
         "currentLang": "Current Language"
+    },
+
+    
+    "about": {
+        "subtext": "Get to know who I am",
+        "tabs": {
+            "intro": "Intro",
+            "parcours": "Journey"
+        },
+        "introText": "After 10 years working at RATP, I chose to reinvent myself through web development. Today, I design modern, dynamic and immersive interfaces."
     }
 }

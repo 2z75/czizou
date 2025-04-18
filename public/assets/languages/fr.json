@@ -23,5 +23,14 @@
         "about": "À propos",
         "contact": "Me contacter",
         "currentLang": "Langue actuelle"
+    },
+
+    "about": {
+        "subtext": "Découvrez qui je suis",
+        "tabs": {
+            "intro": "Intro",
+            "parcours": "Parcours"
+        },
+        "introText": "Après 10 ans de carrière à la RATP, j’ai choisi de me réinventer dans le développement web. Aujourd’hui, je conçois des interfaces modernes, dynamiques et immersives."
     }
 }
