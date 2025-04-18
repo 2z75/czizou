@@ -62,7 +62,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     // Sous menu
     profileMenu = [
-        { icon: 'assets/icons/message.svg', label: 'navbar.contact', route: '/contact' },
+        { icon: 'assets/icons/message.svg', label: 'navbar.contact', route: '/about' },
         { icon: 'assets/icons/controller.svg', label: 'navbar.play', route: '/play' },
         { icon: 'assets/icons/player.svg', label: 'navbar.switchProfile', route: null, disabled: true },
         { icon: 'assets/icons/logout.svg', label: 'navbar.logout', route: '/login' },
