@@ -9,18 +9,8 @@
             <div class="relative w-full h-full">
                 <div #carouselList class="absolute top-[88px] h-full flex gap-3">
 
-                    <div *ngFor="let project of projects; let i = index" class="transition-all duration-500 cursor-pointer rounded-xl shadow-lg overflow-hidden"
-                    [ngClass]="{
-                        'w-36 h-36 scale-110 border-4 border-white z-10': i === currentProjectIndex,
-                        'w-24 h-24 opacity-80 z-0': i !== currentProjectIndex
-                    }"
-                    (click)="selectProject(i)"
-                    >
-                    <img
-                        [src]="project.image"
-                        alt="{{ project.title }}"
-                        class="w-full h-full object-cover"
-                    />
+                    <div *ngFor="let project of projects; let i = index" class="transition-all duration-500 cursor-pointer rounded-xl shadow-lg overflow-hidden" [ngClass]="{ 'w-36 h-36 scale-110 border-4 border-white z-10': i === currentProjectIndex, 'w-24 h-24 opacity-80 z-0': i !== currentProjectIndex }" (click)="selectProject(i)">
+                        <img [src]="project.image" alt="{{ project.title }}" class="w-full h-full object-cover"/>
                     </div>
                 </div>
             </div>
@@ -37,17 +27,10 @@
 
             <!-- Bouton & Technos -->
             <div class="flex justify-between items-center w-full mt-6">
-            <!-- Bouton -->
-            <a
-
-            [href]="currentProject.link"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-72 py-5 bg-black/50 text-white text-xl font-semibold rounded-full backdrop-blur-sm hover:bg-white/20 hover:text-black transition text-center block"
-          >
-            {{ 'project.button' | translate }}
-          </a>
-          
+                <!-- Bouton -->
+                <a [href]="currentProject.link" target="_blank" rel="noopener noreferrer" class="w-72 py-5 bg-black/50 text-white text-xl font-semibold rounded-full backdrop-blur-sm hover:bg-white/20 hover:text-black transition text-center block">
+                    {{ 'project.button' | translate }}
+                </a>
             <!-- Bloc techno -->
                 <div class="bg-black/50 text-white px-10 py-6 rounded-xl shadow-lg text-lg">
                     <p class="opacity-60 text-base mb-1">Technos</p>
