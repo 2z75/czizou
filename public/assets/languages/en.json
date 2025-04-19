@@ -1,7 +1,14 @@
 {
+
+    "login": {
+        "press": "Press the PS button on your controller.",
+        "explore": "Explore my site your way"
+    },
+
     "project": {
         "button": "See More"
     },
+
     "projects": {
         "CZIZOU": {
             "description": "Personal website"

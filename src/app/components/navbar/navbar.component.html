@@ -1,7 +1,7 @@
 <header class="fixed top-0 left-0 w-full z-50 px-20 py-6 flex justify-between items-center text-white">
 <!-- Gauche -->
     <nav class="flex gap-10 text-xl">
-        <a [routerLink]="['home-page']" routerLinkActive="active" class="hover:opacity-100 opacity-70 transition">
+        <a [routerLink]="['projects']" routerLinkActive="active" class="hover:opacity-100 opacity-70 transition">
             {{ 'navbar.projects' | translate }}
         </a>
         <a [routerLink]="['about']" routerLinkActive="active" class="hover:opacity-100 opacity-70 transition">
@@ -12,8 +12,8 @@
     <!-- Droite -->
     <div class="relative flex gap-8 items-center text-xl">
         <!-- Langue -->
-        <button (click)="switchLanguage()" class="opacity-70 hover:opacity-100 transition">
-            {{ currentLang === 'fr' ? 'ENG' : 'FR' }}
+        <button (click)="langService.switchLanguage()" class="opacity-70 hover:opacity-100 transition">
+            {{ langService.getCurrentLang() === 'fr' ? 'ENG' : 'FR' }}
         </button>
         <!-- CV -->
         <a href="/assets/cv_cz.pdf" download aria-label="Download CV" class="opacity-70 hover:opacity-100 transition">
