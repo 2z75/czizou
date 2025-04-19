@@ -1,8 +1,14 @@
 {
+
+    "login": {
+        "press": "Appuyez sur le bouton PS de votre manette.",
+        "explore": "Explorez mon site à votre façon"
+    },
+
     "project": {
         "button": "Voir Plus"
     },
-    
+
     "projects": {
         "CZIZOU": {
             "description": "Site personnel"

@@ -1,30 +1,28 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { RouterLink, RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
     selector: 'app-navbar',
     standalone: true,
-    imports: [RouterLink, RouterModule, TranslateModule, CommonModule],
+    imports: [RouterLink, RouterModule, CommonModule, TranslateModule],
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss']
 })
 
 export class NavbarComponent implements OnInit, OnDestroy {
     currentTime: string = '';
-    currentLang: string = 'fr';
     private intervalId: any;
     private timeoutId: any;
 
+    constructor(
+        public langService: LanguageService,
+        private router: Router
+    ) {}
 
-    constructor(public translate: TranslateService, private router: Router, ) {}
-
-    // Traduction
     ngOnInit(): void {
-        this.currentLang = this.translate.currentLang || this.translate.getBrowserLang() || 'fr';
-        this.translate.use(this.currentLang);
-
         this.updateTime();
         this.syncClock();
     }
@@ -34,13 +32,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         clearTimeout(this.timeoutId);
     }
 
-    switchLanguage(): void {
-        this.currentLang = this.currentLang === 'fr' ? 'en' : 'fr';
-        this.translate.use(this.currentLang);
-    }
-
-
-    //Heure
+    // Heure
     private updateTime(): void {
         const now = new Date();
         this.currentTime = now.toLocaleTimeString([], {
@@ -59,7 +51,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         }, secondsUntilNextMinute * 1000);
     }
 
-
     // Sous menu
     profileMenu = [
         { icon: 'assets/icons/message.svg', label: 'navbar.contact', route: '/about' },
@@ -72,7 +63,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     toggleMenu(): void {
         this.isMenuOpen = !this.isMenuOpen;
-        console.log("toggle menu")
     }
 
     navigateTo(route: string): void {
