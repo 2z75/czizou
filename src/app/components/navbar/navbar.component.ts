@@ -6,7 +6,6 @@ import { LanguageService } from '../../services/language.service';
 
 @Component({
     selector: 'app-navbar',
-    standalone: true,
     imports: [RouterLink, RouterModule, CommonModule, TranslateModule],
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss']
@@ -56,7 +55,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         { icon: 'assets/icons/message.svg', label: 'navbar.contact', route: '/about' },
         { icon: 'assets/icons/controller.svg', label: 'navbar.play', route: '/play' },
         { icon: 'assets/icons/player.svg', label: 'navbar.switchProfile', route: null, disabled: true },
-        { icon: 'assets/icons/logout.svg', label: 'navbar.logout', route: '/login' },
+        { icon: 'assets/icons/logout.svg', label: 'navbar.logout', route: '/' },
     ];
 
     isMenuOpen = false;
