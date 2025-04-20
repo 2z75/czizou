@@ -7,7 +7,6 @@ import gsap from 'gsap';
 
 @Component({
     selector: 'app-project-card',
-    standalone: true,
     imports: [CommonModule, TranslateModule ],
     templateUrl: './project-card.component.html',
     styleUrls: ['./project-card.component.scss']

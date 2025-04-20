@@ -1,22 +1,31 @@
-import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
-import { NavbarComponent } from "./components/navbar/navbar.component";
+import { Component, OnDestroy } from '@angular/core';
+import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
+import { filter, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, NavbarComponent, CommonModule],
+    imports: [CommonModule, RouterOutlet, NavbarComponent],
     templateUrl: './app.component.html',
-    styleUrl: './app.component.scss'
+    styleUrls: ['./app.component.scss'],
 })
 
-export class AppComponent {
+export class AppComponent implements OnDestroy {
+
     title = 'czizou';
+    showNavbar = true;
+    private routerSubscription!: Subscription;
 
-    constructor(public router: Router) {}
-    public hideNavbarRoutes = ['/login'];
+    constructor(private router: Router) {
+        this.routerSubscription = this.router.events
+        .pipe(filter(event => event instanceof NavigationEnd))
+        .subscribe((event: NavigationEnd) => {
+            this.showNavbar = !['/'].includes(event.urlAfterRedirects);
+        });
+    }
 
-    showNavbar(): boolean {
-        return !this.hideNavbarRoutes.includes(this.router.url);
+    ngOnDestroy(): void {
+        this.routerSubscription.unsubscribe();
     }
 }

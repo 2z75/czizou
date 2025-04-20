@@ -1,62 +1,47 @@
 <section class="w-full h-screen bg-black text-white flex flex-col justify-center items-center relative">
 
     <!-- Intro disclaimer -->
-    <div
-      *ngIf="showIntro"
-      [ngClass]="{
-        'animate-fadeIn': !hideIntro,
-        'animate-fadeOut': hideIntro
-      }"
-      class="flex flex-col items-center gap-6 text-center"
-    >
-      <p class="text-lg text-white tracking-wide animate-fadeInDelayed delay-700">
-        Ce portfolio s’inspire librement de l’univers PlayStation. Il n’est ni affilié ni sponsorisé par Sony.
-      </p>
+    <div *ngIf="showIntro" [ngClass]="{ 'animate-fadeIn': !hideIntro,'animate-fadeOut': hideIntro }" class="flex flex-col items-center gap-6 text-center">
+        <p class="text-lg text-white tracking-wide animate-fadeInDelayed delay-700">
+            Ce portfolio s’inspire librement de l’univers PlayStation. Il n’est ni affilié ni sponsorisé par Sony.
+        </p>
     </div>
-  
+
     <!-- Phrase + bouton CZ -->
-    <div
-      *ngIf="showButton && !showProfiles"
-      class="flex flex-col items-center gap-10 animate-fadeIn"
-    >
-      <p class="text-lg text-white/80 tracking-wide">
-        Appuyez sur le logo pour démarrer
-      </p>
-      <app-login-button (clicked)="triggerShowProfiles()"></app-login-button>
+    <div *ngIf="showButton && !showProfiles" class="flex flex-col items-center gap-10 animate-fadeIn">
+        <p class="text-lg text-white/80 tracking-wide">
+            Appuyez sur le bouton <span class="font-playstationItalic text-white">CZ</span> pour démarrer
+        </p>
+        <app-login-button (clicked)="triggerShowProfiles()"></app-login-button>
     </div>
-  
+
     <!-- Phase 2 - Profil PS5 unique -->
     <div *ngIf="showProfiles" class="w-full h-full flex flex-col justify-center items-center gap-12 animate-fadeIn">
-      <div class="text-center">
-        <h1 class="text-3xl font-light tracking-wide mb-2">
-          Bienvenue sur <span class="font-playstation text-white"> CZ</span>izou
-        </h1>
-        <p class="text-white font-light">Explorez mon site à votre façon</p>
-      </div>
-  
-      <div class="relative flex justify-center items-center">
-        <!-- Le petit "1" -->
-        <span class="absolute -top-4 text-white text-sm font-semibold">1</span>
-  
-        <!-- L’icône manette -->
-        <img src="assets/icons/controller.svg" alt="controller" class="w-10 h-10" />
-      </div>
-  
-      <!-- Profil -->
-      <a [routerLink]="['/projects']" class="relative group cursor-pointer transition-transform duration-300 hover:scale-105 flex flex-col items-center">
-        <div class="w-64 h-64 rounded-full p-[5px] bg-gradient-to-br from-white/40 via-white/10 to-white/40 
-                    relative border border-white/10 backdrop-blur-sm">
-          <img src="assets/zizou/zizou.jpg"
-               alt="Profil"
-               class="w-full h-full rounded-full object-cover object-top border border-white/10" />
+        <div class="text-center">
+            <h1 class="text-3xl font-light tracking-wide mb-2">
+            Bienvenue sur <span class="font-playstation text-white"> CZ</span>izou
+            </h1>
+            <p class="text-white font-light">Explorez mon site à votre façon</p>
         </div>
-        <!-- Nom + icône -->
-        <p class="mt-4 text-3xl text-white font-light flex items-center gap-2 animate-fadeIn delay-500">
-          Zinedine Chader
-          <img src="assets/icons/plus.svg" alt="PS Plus" class="w-6 h-6" />
-        </p>
-      </a>
+
+        <div class="relative flex justify-center items-center">
+            <!-- Le petit "1" -->
+            <span class="absolute -top-4 text-white text-sm font-semibold">1</span>
+    
+            <!-- L’icône manette -->
+            <img src="assets/icons/controller.svg" alt="controller" class="w-10 h-10" />
+        </div>
+
+        <!-- Profil -->
+        <a [routerLink]="['/projects']" class="relative group cursor-pointer transition-transform duration-300 hover:scale-105 flex flex-col items-center">
+            <div class="w-64 h-64 rounded-full p-[5px] bg-gradient-to-br from-white/40 via-white/10 to-white/40 relative border border-white/10 backdrop-blur-sm">
+                <img src="assets/zizou/zizou.jpg" alt="Profil" class="w-full h-full rounded-full object-cover object-top border border-white/10" />
+            </div>
+            <!-- Nom + icône -->
+            <p class="mt-4 text-3xl text-white font-light flex items-center gap-2 animate-fadeIn delay-500">
+                Zinedine Chader
+                <img src="assets/icons/plus.svg" alt="PS Plus" class="w-6 h-6" />
+            </p>
+        </a>
     </div>
-  
-  </section>
-  
+</section>
