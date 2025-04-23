@@ -42,5 +42,14 @@
             "parcours": "Journey"
         },
         "introText": "After 10 years working at RATP, I chose to reinvent myself through web development. Today, I design modern, dynamic and immersive interfaces."
+    },
+    "play": {
+        "status": {
+            "online": "Online",
+            "comingSoon": "Video Coming Soon"
+        },
+        "tabs": {
+            "games": "Last Played Games"
+        }
     }
 }

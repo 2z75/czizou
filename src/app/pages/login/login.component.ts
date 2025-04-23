@@ -35,4 +35,5 @@ export class LoginComponent implements OnInit {
     selectProfile(index: number): void {
         this.selectedProfileIndex = index
     }
+
 }
