@@ -41,5 +41,14 @@
             "parcours": "Parcours"
         },
         "introText": "Après 10 ans de carrière à la RATP, j’ai choisi de me réinventer dans le développement web. Aujourd’hui, je conçois des interfaces modernes, dynamiques et immersives."
+    },
+    "play": {
+        "status": {
+            "online": "En ligne",
+            "comingSoon": "Vidéo à venir"
+        },
+        "tabs": {
+            "games": "Derniers jeux joués"
+        }
     }
 }

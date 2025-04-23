@@ -1,45 +1,15 @@
-<div
-  class="mainButton relative flex justify-center items-center cursor-pointer scale-0 animate-scaleUp my-24 mx-20 sm:mx-32 lg:mx-40"
-  role="button"
-  tabindex="0"
-  (click)="triggerClick()"
-  (keydown)="handleKeydown($event)"
->
-  <!-- Bouton -->
-  <div
-    id="main-button"
-    class="button relative w-16 h-16 bg-white rounded-full flex justify-center items-center z-20 overflow-hidden animate-heartbeat"
-  >
-    <div
-      id="glow-line"
-      class="absolute top-1/2 -left-1/4 w-5 h-full bg-white blur-md rotate-[165deg] -translate-y-1/2 z-30 animate-glowLine"
-    ></div>
-    <div
-      id="glow-line-2"
-      class="absolute top-1/2 -left-1/4 w-2.5 h-full bg-white blur-sm rotate-[165deg] -translate-y-1/2 z-20 animate-glowLine delay-[2s]"
-    ></div>
-    <div class="icon">
-        <img
-        src="assets/icons/czizou.svg"
-        alt="CZ Logo"
-        class="w-12 opacity-90"
-        draggable="false"
-      />
-      
+<section class="mainButton relative flex justify-center items-center cursor-pointer scale-0 animate-scaleUp my-24 mx-20 sm:mx-32 lg:mx-40" role="button" tabindex="0" (click)="triggerClick()" (keydown)="handleKeydown($event)">
+    <!-- Bouton -->
+    <div id="main-button" class="button relative w-16 h-16 bg-white rounded-full flex justify-center items-center z-20 overflow-hidden animate-heartbeat">
+        <div id="glow-line" class="absolute top-1/2 -left-1/4 w-5 h-full bg-white blur-md rotate-[165deg] -translate-y-1/2 z-30 animate-glowLine"></div>
+        <div id="glow-line-2" class="absolute top-1/2 -left-1/4 w-2.5 h-full bg-white blur-sm rotate-[165deg] -translate-y-1/2 z-20 animate-glowLine delay-[2s]"></div>
+        <div class="icon">
+            <img src="assets/icons/czizou.svg" alt="CZ Logo" class="w-12 opacity-90" draggable="false"/>
+        </div>
     </div>
-  </div>
 
-  <!-- Glow & Cercles -->
-  <div
-    id="glow"
-    class="absolute w-36 h-36 rounded-full bg-white/80 blur-[30px] z-0 pointer-events-none animate-glowFade"
-  ></div>
-  <div
-    id="circle1"
-    class="absolute w-20 h-20 rounded-full border border-white drop-shadow-[0_0_20px_rgba(255,255,255,1)] z-0 pointer-events-none animate-scaleAndFade delay-[100ms]"
-  ></div>
-  <div
-    id="circle2"
-    class="absolute w-20 h-20 rounded-full border-4 border-white z-0 pointer-events-none animate-scaleAndFadeBorder"
-  ></div>
-</div>
+    <!-- Cercles -->
+    <div id="glow" class="absolute w-36 h-36 rounded-full bg-white/80 blur-[30px] z-0 pointer-events-none animate-glowFade"></div>
+    <div id="circle1" class="absolute w-20 h-20 rounded-full border border-white drop-shadow-[0_0_20px_rgba(255,255,255,1)] z-0 pointer-events-none animate-scaleAndFade delay-[100ms]"></div>
+    <div id="circle2" class="absolute w-20 h-20 rounded-full border-4 border-white z-0 pointer-events-none animate-scaleAndFadeBorder"></div>
+</section>

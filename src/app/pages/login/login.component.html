@@ -1,13 +1,12 @@
-<section class="w-full h-screen bg-black text-white flex flex-col justify-center items-center relative">
-
-    <!-- Intro disclaimer -->
+<section class="w-full h-screen bg-black text-white flex flex-col justify-center items-center relative px-6 md:px-20">
+    <!-- Intro -->
     <div *ngIf="showIntro" [ngClass]="{ 'animate-fadeIn': !hideIntro,'animate-fadeOut': hideIntro }" class="flex flex-col items-center gap-6 text-center">
         <p class="text-lg text-white tracking-wide animate-fadeInDelayed delay-700">
             Ce portfolio s’inspire librement de l’univers PlayStation. Il n’est ni affilié ni sponsorisé par Sony.
         </p>
     </div>
 
-    <!-- Phrase + bouton CZ -->
+    <!-- Bouton -->
     <div *ngIf="showButton && !showProfiles" class="flex flex-col items-center gap-10 animate-fadeIn">
         <p class="text-lg text-white/80 tracking-wide">
             Appuyez sur le bouton <span class="font-playstationItalic text-white">CZ</span> pour démarrer
@@ -15,7 +14,7 @@
         <app-login-button (clicked)="triggerShowProfiles()"></app-login-button>
     </div>
 
-    <!-- Phase 2 - Profil PS5 unique -->
+    <!-- Choix Profil -->
     <div *ngIf="showProfiles" class="w-full h-full flex flex-col justify-center items-center gap-12 animate-fadeIn">
         <div class="text-center">
             <h1 class="text-3xl font-light tracking-wide mb-2">
@@ -23,12 +22,8 @@
             </h1>
             <p class="text-white font-light">Explorez mon site à votre façon</p>
         </div>
-
         <div class="relative flex justify-center items-center">
-            <!-- Le petit "1" -->
             <span class="absolute -top-4 text-white text-sm font-semibold">1</span>
-    
-            <!-- L’icône manette -->
             <img src="assets/icons/controller.svg" alt="controller" class="w-10 h-10" />
         </div>
 
@@ -37,11 +32,21 @@
             <div class="w-64 h-64 rounded-full p-[5px] bg-gradient-to-br from-white/40 via-white/10 to-white/40 relative border border-white/10 backdrop-blur-sm">
                 <img src="assets/zizou/zizou.jpg" alt="Profil" class="w-full h-full rounded-full object-cover object-top border border-white/10" />
             </div>
-            <!-- Nom + icône -->
             <p class="mt-4 text-3xl text-white font-light flex items-center gap-2 animate-fadeIn delay-500">
                 Zinedine Chader
                 <img src="assets/icons/plus.svg" alt="PS Plus" class="w-6 h-6" />
             </p>
         </a>
     </div>
+
+    <!-- Skip -->
+    <a [routerLink]="['/projects']" class="absolute bottom-12 right-6 md:right-20 text-lg text-white/80 tracking-wide hover:text-white transition flex items-center gap-2 group">
+        Passer
+        <svg width="24" height="24" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1">
+            <path d="M5.26425 53C3.16846 48.4337 2 43.3533 2 38C2 18.1177 18.1177 2 38 2C57.8823 2 74 18.1177 74 38C74 57.8823 57.8823 74 38 74C33.0009 74 28.2398 72.981 23.913 71.1395" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            <path d="M20.7826 48.1739L2 66.9565" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            <path d="M27.0435 56L16.0869 66.9565" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M42.1292 60.2469L56.7826 19.2174L14.3995 33.8322C13.4743 34.1513 13.4992 35.5078 14.4292 35.8122C19.1573 37.3596 28.1097 40.6314 31.7391 44.2609C35.3496 47.8714 38.6062 55.9464 40.1634 60.2377C40.4902 61.1381 41.807 61.149 42.1292 60.2469ZM43.4782 38C46.5038 38 48.9565 35.5473 48.9565 32.5217C48.9565 29.4962 46.5038 27.0435 43.4782 27.0435C40.4527 27.0435 38 29.4962 38 32.5217C38 35.5473 40.4527 38 43.4782 38Z" fill="white"/>
+        </svg>
+    </a>
 </section>
