@@ -10,9 +10,9 @@ module.exports = {
                 scaleAndFade: 'scaleAndFade 2s infinite',
                 scaleAndFadeBorder: 'scaleAndFadeBorder 2s infinite',
                 scaleUp: 'scaleUp 1.5s ease-in-out forwards',
-                fadeIn: 'fadeIn 1s ease-out forwards',
+                fadeIn: 'fadeIn 2s ease-out forwards',
                 fadeOut: 'fadeOut 1s ease-in forwards',
-                fadeInDelayed: 'FadeInDelayed 1.2s ease forwards',
+                fadeInDelayed: 'FadeInDelayed 1.5s ease forwards',
             },
             keyframes: {
                 heartbeat: {

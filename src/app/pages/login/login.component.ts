@@ -1,39 +1,58 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LoginButtonComponent } from '../../components/login-button/login-button.component';
 
+enum LoginStep {
+    INTRO,
+    BUTTON,
+    PROFILE
+}
+
 @Component({
     selector: 'app-login',
-    imports: [RouterModule, CommonModule, LoginButtonComponent],
+    imports: [CommonModule, RouterModule, LoginButtonComponent],
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent implements OnInit {
-    showIntro = true;
+export class LoginComponent {
+    step: LoginStep = LoginStep.INTRO;
+
     hideIntro = false;
-    showButton = false;
-    showProfiles = false;
+    hideButton = false;
+    hideProfiles = false;
+
     selectedProfileIndex = 1;
+
+    get isIntro() {
+        return this.step === LoginStep.INTRO;
+    }
+
+    get isButton() {
+        return this.step === LoginStep.BUTTON;
+    }
+
+    get isProfile() {
+        return this.step === LoginStep.PROFILE;
+    }
 
     ngOnInit(): void {
         setTimeout(() => {
-            this.hideIntro = true; 
+        this.hideIntro = true;
         }, 3000);
-
         setTimeout(() => {
-            this.showIntro = false;
-            this.showButton = true;
+        this.step = LoginStep.BUTTON;
         }, 5000);
     }
 
     triggerShowProfiles(): void {
-        this.showProfiles = true;
+        this.hideButton = true;
+        setTimeout(() => {
+            this.step = LoginStep.PROFILE;
+            setTimeout(() => {
+                this.hideProfiles = false;
+            }, 50);
+        }, 1000);
     }
-
-    selectProfile(index: number): void {
-        this.selectedProfileIndex = index
-    }
-
 }
