@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, AfterViewInit, OnChanges, SimpleChanges, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from '../../interfaces/project';
 import { TranslateModule } from '@ngx-translate/core';
@@ -18,15 +18,33 @@ export class ProjectCardComponent implements AfterViewInit, OnChanges {
     @Output() projectSelected = new EventEmitter<number>();
 
     @ViewChild('carouselList', { static: false }) carouselListRef!: ElementRef;
+    @ViewChildren('shine') shinesRef!: QueryList<ElementRef>;
 
     ngAfterViewInit(): void {
         this.updateCarouselPosition();
+        this.animateShine(); // 🔥 déclenche au chargement
     }
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['currentProjectIndex'] && !changes['currentProjectIndex'].firstChange) {
             this.updateCarouselPosition();
+            this.animateShine(); // 🔥 re-déclenche à chaque changement de projet
         }
+    }
+
+    animateShine(): void {
+        const shine = this.carouselListRef.nativeElement.querySelector('[#shine]');
+        if (!shine) return;
+        
+        gsap.set(shine, { top: '-150%', left: '-150%' }); // reset la position
+        gsap.to(shine, {
+            top: '150%',
+            left: '150%',
+            duration: 4,
+            ease: 'power2.inOut',
+            repeat: -1,
+            repeatDelay: 1,
+        });
     }
 
     get currentProject(): Project {
@@ -39,18 +57,19 @@ export class ProjectCardComponent implements AfterViewInit, OnChanges {
 
     updateCarouselPosition(): void {
         if (!this.carouselListRef?.nativeElement) return;
-
+    
         const baseCardWidth = 96; // w-24
         const activeCardWidth = 144; // w-36
-        const gap = 12; // gap-6
+        const gap = 6; // gap-1.5 = 6px
         const cardSpacing = baseCardWidth + gap;
-        const offset = this.currentProjectIndex * cardSpacing + (activeCardWidth - baseCardWidth) / 2;
-
+        const offset = (this.currentProjectIndex * cardSpacing) + ((activeCardWidth - baseCardWidth) / 2);
+    
         gsap.to(this.carouselListRef.nativeElement, {
-            x: -offset + 32,
+            x: -offset,
             duration: 0.6,
-            ease: 'power2.out',
+            ease: 'power3.out',
         });
     }
+    
 
 }

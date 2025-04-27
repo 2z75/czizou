@@ -5,13 +5,13 @@ import { ProjectCardComponent } from '../../components/project-card/project-card
 import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'app-home-page',
+    selector: 'app-projects',
     imports: [CommonModule, ProjectCardComponent],
-    templateUrl: './home-page.component.html',
-    styleUrl: './home-page.component.scss',
+    templateUrl: './projects.component.html',
+    styleUrl: './projects.component.scss',
 })
 
-export class HomePageComponent {
+export class ProjectsComponent {
     projects: Project[] = projectData;
     currentProjectIndex = 0;
 
