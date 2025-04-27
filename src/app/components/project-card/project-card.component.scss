@@ -1,0 +1,70 @@
+.glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 80px;
+    height: 150%;
+    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,0));
+    opacity: 0.6;
+    filter: blur(6px); 
+    animation: glowMove 8s infinite ease-in-out;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 10;
+}
+@keyframes glowMove {
+    0% {
+        top: -50%;
+        left: -50%;
+    }
+    60%, 100% {
+        top: 150%;
+        left: 150%;
+    }
+}
+
+.border-animated {
+    position: relative;
+    border: 3px solid transparent;
+    border-radius: 1rem;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    background-size: 200% 200%;
+    background-clip: border-box;
+    -webkit-background-clip: border-box;
+    animation: shine 6s linear infinite;
+}
+
+.hover-card {
+  transition: transform 0.5s ease, background 0.5s ease, box-shadow 0.5s ease;
+    border: 2px solid transparent;
+    border-radius: 1rem;
+    background: transparent;
+    
+    &:hover {
+      transform: scale(1.05);
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.2) 30%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0.2) 70%
+      );
+      background-size: 200% 200%;
+      background-clip: border-box;
+      -webkit-background-clip: border-box;
+      animation: shine 6s linear infinite;
+    }
+  }
+  
+  @keyframes shine {
+    0% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: -100% 50%;
+    }
+  }
+  
