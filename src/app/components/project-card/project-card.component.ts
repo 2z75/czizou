@@ -33,7 +33,7 @@ export class ProjectCardComponent implements AfterViewInit, OnChanges {
     }
 
     animateShine(): void {
-        const shine = this.carouselListRef.nativeElement.querySelector('[#shine]');
+        const shine = this.carouselListRef.nativeElement.querySelector('#shine');
         if (!shine) return;
         
         gsap.set(shine, { top: '-150%', left: '-150%' }); // reset la position

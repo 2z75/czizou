@@ -26,12 +26,7 @@
     position: relative;
     border: 3px solid transparent;
     border-radius: 1rem;
-    background: linear-gradient(
-        120deg,
-        rgba(255, 255, 255, 0) 30%,
-        rgba(255, 255, 255, 0.8) 50%,
-        rgba(255, 255, 255, 0) 70%
-    );
+    background: linear-gradient( 120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 70% );
     background-size: 200% 200%;
     background-clip: border-box;
     -webkit-background-clip: border-box;
@@ -39,32 +34,55 @@
 }
 
 .hover-card {
-  transition: transform 0.5s ease, background 0.5s ease, box-shadow 0.5s ease;
+    transition: transform 0.5s ease, background 0.5s ease, box-shadow 0.5s ease;
     border: 2px solid transparent;
     border-radius: 1rem;
     background: transparent;
-    
     &:hover {
-      transform: scale(1.05);
-      background: linear-gradient(
-        120deg,
-        rgba(255, 255, 255, 0.2) 30%,
-        rgba(255, 255, 255, 0.8) 50%,
-        rgba(255, 255, 255, 0.2) 70%
-      );
-      background-size: 200% 200%;
-      background-clip: border-box;
-      -webkit-background-clip: border-box;
-      animation: shine 6s linear infinite;
+        transform: scale(1.05);
+        background: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.2) 30%,
+            rgba(255, 255, 255, 0.8) 50%,
+            rgba(255, 255, 255, 0.2) 70%
+        );
+        background-size: 200% 200%;
+        background-clip: border-box;
+        -webkit-background-clip: border-box;
+        animation: shine 6s linear infinite;
     }
-  }
-  
-  @keyframes shine {
+}
+@keyframes shine {
     0% {
-      background-position: 100% 50%;
+        background-position: 100% 50%;
     }
     100% {
-      background-position: -100% 50%;
+        background-position: -100% 50%;
     }
-  }
-  
+}
+
+.button-container {
+    &::before {
+        content: '';
+        opacity: 0;
+        position: absolute;
+        width: 200%;
+        height: 800%;
+        border-radius: inherit;
+        background-image: conic-gradient(#fff0, #fff9);
+        animation: borderMoveButton 6s linear infinite;
+        pointer-events: none;
+        transition: opacity 0.3s;
+    }
+    &:hover::before {
+        opacity: 1;
+    }
+}
+@keyframes borderMoveButton {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

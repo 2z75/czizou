@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { SafeUrlPipe } from './safe-url.pipe';
+import gsap from 'gsap';
 
 @Component({
     selector: 'app-play',
@@ -12,6 +13,8 @@ import { SafeUrlPipe } from './safe-url.pipe';
 
 export class PlayComponent {
 
+    @ViewChild('videoModal', { static: false }) videoModalRef!: ElementRef;
+
     currentTab: string = 'games';
 
     tabs = [
@@ -20,6 +23,7 @@ export class PlayComponent {
 
     games = [
         { thumbnail: 'assets/highlights/callOf.jpg', embedUrl: 'https://youtu.be/QDJs218CwgM' },
+        { thumbnail: 'assets/highlights/warzone.jpg', embedUrl: 'https://youtu.be/0v1g2X8j4nM' },
         { thumbnail: 'assets/highlights/splitFiction.jpg', embedUrl: '' },
         { thumbnail: 'assets/highlights/grBreakpoint.jpg', embedUrl: '' },
         { thumbnail: 'assets/highlights/fc25.jpg', embedUrl: '' },
@@ -29,4 +33,34 @@ export class PlayComponent {
     ];
 
     selectedVideo: string | null = null;
+
+    openModal(url: string) {
+        this.selectedVideo = url;
+        setTimeout(() => {
+            if (this.videoModalRef?.nativeElement) {
+                gsap.fromTo(
+                    this.videoModalRef.nativeElement,
+                    { opacity: 0, scale: 0.95},
+                    { opacity: 1, scale: 1, duration: 0.6, ease: 'power3.out' }
+                );
+            }
+        });
+    }
+    
+
+    closeModal() {
+        if (this.videoModalRef) {
+            gsap.to(this.videoModalRef.nativeElement, {
+                opacity: 0,
+                scale: 0.95,
+                duration: 0.5,
+                ease: 'power3.in',
+                onComplete: () => {
+                    this.selectedVideo = null;
+                }
+            });
+        } else {
+            this.selectedVideo = null;
+        }
+    }
 }
