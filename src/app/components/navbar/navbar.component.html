@@ -1,5 +1,5 @@
 <header class="fixed top-0 left-0 w-full z-50 px-20 py-6 flex justify-between items-center text-white">
-<!-- Gauche -->
+    <!-- Gauche -->
     <nav class="flex gap-10 text-xl">
         <a [routerLink]="['projects']" routerLinkActive="active" class="hover:opacity-100 opacity-70 transition">
             {{ 'navbar.projects' | translate }}
@@ -11,33 +11,26 @@
 
     <!-- Droite -->
     <div class="relative flex gap-8 items-center text-xl">
-        <!-- Langue -->
         <button (click)="langService.switchLanguage()" class="opacity-70 hover:opacity-100 transition">
             {{ langService.getCurrentLang() === 'fr' ? 'ENG' : 'FR' }}
         </button>
-        <!-- CV -->
         <a href="/assets/cv_cz.pdf" download aria-label="Download CV" class="opacity-70 hover:opacity-100 transition">
             <img src="assets/icons/download.svg" alt="Download CV" class="w-5 h-5" />
         </a>
-
         <!-- Profil -->
         <div class="relative w-12 h-12 profile-avatar">
             <img src="assets/zizou/zizou.jpg" alt="Photo" class="w-full h-full object-cover object-top rounded-full border-2 border-white cursor-pointer" (click)="toggleMenu()"/>
-            <!-- Online -->
             <span class="absolute bottom-0 right-0 flex items-center justify-center">
                 <span class="absolute w-3 h-3 bg-green-500 rounded-full slow-ping opacity-75"></span>
                 <span class="relative w-3 h-3 bg-green-500 rounded-full"></span>
             </span>
         </div>
-
         <!-- Menu déroulant -->
-        <nav *ngIf="isMenuOpen" class="absolute top-16 right-0 w-64 text-white rounded-md shadow-lg z-50 pb-2 profile-menu" style="background: radial-gradient(circle at 5% 100%, rgba(38,43,44,0.6), rgb(25,29,31,1) 60%); backdrop-filter: blur(6px);">
-        <!-- En-tête -->
+        <nav #dropMenu [class.invisible]="!isMenuOpen" class="profile-menu absolute top-16 right-0 w-64 text-white rounded-md shadow-lg z-50 pb-2 transition-opacity duration-300" style="background: radial-gradient(circle at 5% 100%, rgba(38,43,44,0.6), rgb(25,29,31,1) 60%); backdrop-filter: blur(6px);">
             <div class="flex items-center justify-start px-4 py-2 text-sm font-light">
                 <span>Zinedine Chader</span>
                 <img src="assets/icons/plus.svg" alt="PS Plus" class="w-4 h-4 ml-2" />
             </div>
-            <!-- Boutons -->
             <ul class="text-sm font-light">
                 <li *ngFor="let item of profileMenu" class="border-b border-white/30 last:border-none">
                     <button [disabled]="item.disabled" (click)="!item.disabled && item.route && navigateTo(item.route)" class="w-full flex items-center px-4 py-3 border border-transparent transition-colors" [ngClass]="{ 'hover:border-white cursor-pointer opacity-100': !item.disabled, 'cursor-not-allowed opacity-50 grayscale': item.disabled }">
@@ -51,7 +44,6 @@
                 </li>
             </ul>
         </nav>
-
         <!-- Heure -->
         <span class="ml-2 opacity-70 hover:opacity-100 transition cursor-pointer">{{ currentTime }}</span>
     </div>
