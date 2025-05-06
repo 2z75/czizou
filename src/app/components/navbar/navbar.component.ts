@@ -85,7 +85,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         }
 
         const items = menu.querySelectorAll('li');
-        gsap.to(items, { opacity: 0, y: -5, stagger: 0.05, duration: 0.25, ease: 'power2.in' });
+        gsap.to(items, { opacity: 0, y: -5, stagger: { each: 0.05, from: 'end'}, duration: 0.25, ease: 'power2.in' });
         gsap.to(menu, { opacity: 0, y: -10, duration: 0.3, ease: 'power3.in', delay: 0.15, onComplete: () => { this.isMenuOpen = false }});
     }
 

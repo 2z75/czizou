@@ -13,7 +13,7 @@
                     <img src="assets/icons/plus.svg" alt="PS Plus" class="w-5 h-5 ml-2" />
                 </h2>
                 <div class="text-sm opacity-70 italic mt-1">
-                    <span>{{ "about.subtext" | translate }}</span>
+                    <span class="translatable">{{ "about.subtext" | translate }}</span>
                 </div>
             </div>
         </div>
@@ -21,16 +21,16 @@
 
     <!-- Onglets -->
     <nav class="flex gap-12 text-lg text-white/70 pb-2">
-        <button *ngFor="let tab of tabs" (click)="currentTab = tab.key" [ngClass]="{ 'text-white': currentTab === tab.key, 'hover:text-white': true, transition: true}">
+        <button *ngFor="let tab of tabs" (click)="setTab(tab.key)" [ngClass]="{ 'text-white': currentTab === tab.key, 'hover:text-white': true, transition: true}">
             {{ tab.label | translate }}
         </button>
     </nav>
 
-    <div [ngSwitch]="currentTab" class="mt-6">
+    <div class="mt-6">
         <!-- Intro -->
-        <div *ngSwitchCase="'intro'" class="flex flex-col justify-center items-center text-center min-h-[200px] gap-12">
+        <div #introRef [class.hidden]="currentTab !== 'intro'" class="flex flex-col justify-center items-center text-center min-h-[200px] gap-12">
             <!-- Phrase d’accroche -->
-            <p class="max-w-2xl text-xl leading-relaxed bg-gradient-to-r from-white via-white/50 to-white bg-[length:200%] bg-clip-text text-transparent animate-shine">
+            <p class="translatable max-w-2xl text-xl leading-relaxed bg-gradient-to-r from-white via-white/50 to-white bg-[length:200%] bg-clip-text text-transparent animate-shine">
                 {{ "about.introText" | translate }}
             </p>
             <!-- Icones -->
@@ -60,7 +60,7 @@
         </div>
 
         <!-- Parcours -->
-        <div *ngSwitchCase="'parcours'" class="grid grid-cols-3 gap-6">
+        <div  #parcoursRef [class.hidden]="currentTab !== 'parcours'" class="grid grid-cols-3 gap-6">
             <div *ngFor="let job of parcours" class="bg-white/5 p-6 rounded-lg flex flex-col items-center text-center gap-2 transition-all duration-300 hover:scale-105 hover:z-10 cursor-pointer">
                 <img [src]="job.logo" [alt]="job.nom" class="w-16 h-16 object-contain"/>
                 <p class="text-white text-lg font-semibold">{{ job.nom }}</p>
