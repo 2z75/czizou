@@ -5,6 +5,8 @@ export interface Project {
     image: string;
     background: string;
     modelPath: string;
+    scale: number;
+    centered: boolean;
     technos: string[];
     fontClass: string;
     textColor: string;
