@@ -22,8 +22,8 @@ export const projectData: Project[] = [
         description: 'projects.TrIpGather.description',
         image: 'assets/tn-img/tnTg.png',
         background: 'assets/bg-img/tripGather.png',
-        modelPath: 'assets/modal-img/tripGather.png',
-        scale: 0.01,
+        modelPath: 'assets/models/bag.glb',
+        scale: 3.4,
         centered: false,
         technos: ['Java', 'Angular', 'MySQL', 'Docker'],
         fontClass: 'font-montserrat',
@@ -41,7 +41,7 @@ export const projectData: Project[] = [
         scale: 1.5,
         centered: true,
         technos: ['Wordpress', 'Javascript', 'PHP', 'MySQL'],
-        fontClass: 'font-playstation',
+        fontClass: 'font-gotham',
         textColor: 'text-white',
         link: 'https://www.arekipabythekub.com/'
     },
@@ -55,7 +55,7 @@ export const projectData: Project[] = [
         scale: 10,
         centered: true,
         technos: ['Symfony', 'JavaScript', 'MySQL'],
-        fontClass: 'font-montserrat',
+        fontClass: 'font-quantico',
         textColor: 'text-white',
         link: 'https://github.com/WildCodeSchool-2023-09/php-paris-p3-originsdigital.git'
     }

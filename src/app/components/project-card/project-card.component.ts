@@ -4,7 +4,7 @@ import { Project } from '../../interfaces/project';
 import { TranslateModule } from '@ngx-translate/core';
 import { GLTFLoader } from 'three-stdlib'
 import gsap from 'gsap';
-import { AmbientLight, Box3, BoxHelper, Clock, DirectionalLight, Group, PerspectiveCamera, Scene, Vector3, WebGLRenderer } from 'three';
+import { AmbientLight, Box3, Clock, DirectionalLight, Group, PerspectiveCamera, Scene, Vector3, WebGLRenderer } from 'three';
 
 
 @Component({
@@ -27,6 +27,9 @@ export class ProjectCardComponent implements AfterViewInit, OnChanges {
     camera!: PerspectiveCamera;
     renderer!: WebGLRenderer;
     model: any;
+    isDragging = false;
+    previousMouseX = 0;
+    rotationSpeed = 0.005;
     clock = new Clock();
 
     ngAfterViewInit(): void {
@@ -34,6 +37,28 @@ export class ProjectCardComponent implements AfterViewInit, OnChanges {
         this.animateShine(); 
         this.init3D();
         this.loadModel(this.currentProject.modelPath);
+        const canvas = this.canvasRef.nativeElement;
+
+        canvas.addEventListener('mousedown', (e: MouseEvent) => {
+            this.isDragging = true;
+            this.previousMouseX = e.clientX;
+        });
+
+        canvas.addEventListener('mouseup', () => {
+        this.isDragging = false;
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+        this.isDragging = false;
+        });
+
+        canvas.addEventListener('mousemove', (e: MouseEvent) => {
+            if (this.isDragging && this.model) {
+                const deltaX = e.clientX - this.previousMouseX;
+                this.previousMouseX = e.clientX;
+                this.model.rotation.y += deltaX * this.rotationSpeed;
+            }
+        });
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -47,8 +72,8 @@ export class ProjectCardComponent implements AfterViewInit, OnChanges {
     animateShine(): void {
         const shine = this.carouselListRef.nativeElement.querySelector('#shine');
         if (!shine) return;
-        
-        gsap.set(shine, { top: '-150%', left: '-150%' }); // reset la position
+
+        gsap.set(shine, { top: '-150%', left: '-150%' });
         gsap.to(shine, {
             top: '150%',
             left: '150%',
@@ -69,14 +94,13 @@ export class ProjectCardComponent implements AfterViewInit, OnChanges {
 
     updateCarouselPosition(): void {
         if (!this.carouselListRef?.nativeElement) return;
-    
+
         const baseCardWidth = 96; // w-24
         const activeCardWidth = 144; // w-36
         const gap = 6; // gap-1.5 = 6px
         const cardSpacing = baseCardWidth + gap;
         const offset = (this.currentProjectIndex * cardSpacing) + ((activeCardWidth - baseCardWidth) / 2);
 
-    
         gsap.to(this.carouselListRef.nativeElement, {
             x: -offset + 20,
             duration: 0.6,
@@ -88,53 +112,42 @@ export class ProjectCardComponent implements AfterViewInit, OnChanges {
         if (!this.scene) return;
 
         if (this.model) {
-          this.scene.remove(this.model);
-          this.model.traverse((child: any) => {
-            if (child.isMesh) {
-              child.geometry.dispose();
-              if (child.material.map) child.material.map.dispose();
-              child.material.dispose();
-            }
-          });
-          this.model = null;
+            this.scene.remove(this.model);
+            this.model.traverse((child: any) => {
+                if (child.isMesh) {
+                    child.geometry.dispose();
+                    if (child.material.map) child.material.map.dispose();
+                    child.material.dispose();
+                }
+            });
+            this.model = null;
         }
-      
+
         const loader = new GLTFLoader();
-    loader.load(path, gltf => {
+        loader.load(path, gltf => {
         const rawModel = gltf.scene;
         const box = new Box3().setFromObject(rawModel);
         const center = new Vector3();
         box.getCenter(center);
 
-        // Recentre l'objet autour de son centre géométrique
         rawModel.position.sub(center);
 
-        // Création d’un groupe pour gérer la rotation
         const group = new Group();
         group.add(rawModel);
-
-        // Appliquer la position et l’échelle au groupe
         group.position.y = 0;
         const scale = this.currentProject.scale || 1;
         group.scale.set(scale, scale, scale);
 
         this.model = group;
         this.scene.add(this.model);
-
-
-            const boxHelper = new BoxHelper(this.model, 0x00ff00);
-            this.scene.add(boxHelper);
-
-            this.animate();
+        this.animate();
         });
-      }
-
+    }
 
     init3D(): void {
         const canvas = this.canvasRef.nativeElement;
 
         this.scene = new Scene();
-
         this.camera = new PerspectiveCamera(35, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
         this.camera.position.z = 7;
 
@@ -147,18 +160,14 @@ export class ProjectCardComponent implements AfterViewInit, OnChanges {
         dirLight.position.set(5, 5, 5);
 
         this.scene.add(ambientLight, dirLight);
-
     }
 
     animate(): void {
         requestAnimationFrame(() => this.animate());
-        
         const delta = this.clock.getDelta();
         if (this.model) {
-            this.model.rotation.y += delta * 0.1;
+            this.model.rotation.y += delta * 0.02;
         }
-        
         this.renderer.render(this.scene, this.camera);
     }
-
 }
