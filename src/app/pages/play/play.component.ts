@@ -22,14 +22,14 @@ export class PlayComponent {
     ];
 
     games = [
-        { thumbnail: 'assets/highlights/callOf.jpg', embedUrl: 'https://youtu.be/QDJs218CwgM' },
-        { thumbnail: 'assets/highlights/warzone.jpg', embedUrl: 'https://youtu.be/0v1g2X8j4nM' },
-        { thumbnail: 'assets/highlights/splitFiction.jpg', embedUrl: '' },
-        { thumbnail: 'assets/highlights/grBreakpoint.jpg', embedUrl: '' },
-        { thumbnail: 'assets/highlights/fc25.jpg', embedUrl: '' },
         { thumbnail: 'assets/highlights/r6.jpg', embedUrl: '' },
+        { thumbnail: 'assets/highlights/fc25.jpg', embedUrl: 'https://youtu.be/dmwM516cSpY' },
+        { thumbnail: 'assets/highlights/warzone.jpg', embedUrl: '' },
+        { thumbnail: 'assets/highlights/callOf.jpg', embedUrl: '' },
+        { thumbnail: 'assets/highlights/splitFiction.jpg', embedUrl: '' },
         { thumbnail: 'assets/highlights/ufc5.jpg', embedUrl: '' },
-        { thumbnail: 'assets/highlights/bleach.jpg', embedUrl: '' }
+        { thumbnail: 'assets/highlights/bleach.jpg', embedUrl: '' },
+        { thumbnail: 'assets/highlights/grBreakpoint.jpg', embedUrl: '' }
     ];
 
     selectedVideo: string | null = null;
