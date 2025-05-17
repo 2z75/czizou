@@ -13,19 +13,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Installe Node.js
+    - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18'
 
-    - name: Installe les dependences
+    - name: Install dependencies
       run: npm ci
 
     - name: Build Angular project
       run: npm run build -- --configuration production
-
-    - name: Debug build output
-      run: ls -R dist/czizou
 
     - name: Clean remote target folder
       uses: appleboy/ssh-action@v0.1.8
@@ -34,18 +31,9 @@ jobs:
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.VPS_PRIVATE_KEY }}
         script: |
-          sudo rm -rf /var/www/czizou.com/* 
-          sudo rm -rf /var/www/czizou.com/.* || true
-
-    - name: Fix permissions before deployment
-      uses: appleboy/ssh-action@v0.1.8
-      with:
-        host: ${{ secrets.VPS_HOST }}
-        username: ${{ secrets.VPS_USER }}
-        key: ${{ secrets.VPS_PRIVATE_KEY }}
-        script: |
-          sudo chown -R $USER:$USER /var/www/czizou.com
-          sudo chmod -R 755 /var/www/czizou.com
+          sudo rm -rf /var/www/czizou.com/*
+          sudo mkdir -p /var/www/czizou.com
+          sudo chown $USER:$USER /var/www/czizou.com
 
     - name: Deploy to VPS
       uses: appleboy/scp-action@v0.1.4
@@ -56,3 +44,14 @@ jobs:
         source: dist/czizou/browser/*
         target: /var/www/czizou.com/
 
+    - name: Fix permissions after deployment
+      uses: appleboy/ssh-action@v0.1.8
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.VPS_PRIVATE_KEY }}
+        script: |
+          sudo chown -R www-data:www-data /var/www/czizou.com
+          sudo find /var/www/czizou.com -type d -exec chmod 755 {} \;
+          sudo find /var/www/czizou.com -type f -exec chmod 644 {} \;
+          sudo systemctl reload nginx
