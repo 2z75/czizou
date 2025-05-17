@@ -45,7 +45,7 @@ jobs:
 
     - name: Deploy with manual SCP
       run: |
-        scp -r -i key.pem dist/czizou/browser/* ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/czizou.com/
+        scp -o StrictHostKeyChecking=no -r -i key.pem dist/czizou/browser/* ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/czizou.com/
 
     - name: Fix permissions
       uses: appleboy/ssh-action@v0.1.8
