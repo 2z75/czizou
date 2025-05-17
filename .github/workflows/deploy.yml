@@ -54,5 +54,5 @@ jobs:
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.VPS_PRIVATE_KEY }}
         source: dist/czizou/browser/*
-        target: /var/www/czizou.com
+        target: /var/www/czizou.com/
 
