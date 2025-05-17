@@ -33,7 +33,9 @@ jobs:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.VPS_PRIVATE_KEY }}
-        script: sudo rm -rf /var/www/czizou.com/*
+        script: |
+          sudo rm -rf /var/www/czizou.com/* 
+          sudo rm -rf /var/www/czizou.com/.* || true
 
     - name: Fix permissions before deployment
       uses: appleboy/ssh-action@v0.1.8
