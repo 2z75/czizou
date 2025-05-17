@@ -38,14 +38,14 @@ jobs:
           sudo mkdir -p /var/www/czizou.com
           sudo chown -R $USER:$USER /var/www/czizou.com
 
-    - name: Deploy files to VPS
-      uses: appleboy/scp-action@v0.1.4
-      with:
-        host: ${{ secrets.VPS_HOST }}
-        username: ${{ secrets.VPS_USER }}
-        key: ${{ secrets.VPS_PRIVATE_KEY }}
-        source: dist/czizou/browser/*
-        target: /var/www/czizou.com
+    - name: Setup SSH key
+      run: |
+        echo "${{ secrets.VPS_PRIVATE_KEY }}" > key.pem
+        chmod 600 key.pem
+
+    - name: Deploy with manual SCP
+      run: |
+        scp -r -i key.pem dist/czizou/browser/* ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/czizou.com/
 
     - name: Fix permissions
       uses: appleboy/ssh-action@v0.1.8
