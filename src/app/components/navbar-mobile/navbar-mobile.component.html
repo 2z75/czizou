@@ -1,0 +1,33 @@
+<nav class="fixed bottom-0 left-0 w-full bg-black/80 backdrop-blur-md border-t border-white/10 z-50 flex justify-around items-center py-2 text-white text-xs">
+  <!-- Projects -->
+  <a [routerLink]="['/projects']" routerLinkActive="text-white" class="flex flex-col items-center text-white/60 hover:text-white transition">
+    <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M3 13h2v-2H3v2zm4 0h2v-2H7v2zm4 0h10v-2H11v2z" />
+    </svg>
+    Projets
+  </a>
+
+  <!-- About -->
+  <a [routerLink]="['/about']" routerLinkActive="text-white" class="flex flex-col items-center text-white/60 hover:text-white transition">
+    <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+    </svg>
+    À propos
+  </a>
+
+  <!-- Play -->
+  <a [routerLink]="['/play']" routerLinkActive="text-white" class="flex flex-col items-center text-white/60 hover:text-white transition">
+    <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M8 5v14l11-7z" />
+    </svg>
+    Play
+  </a>
+
+  <!-- Langue -->
+  <button (click)="langService.switchLanguage()" class="flex flex-col items-center text-white/60 hover:text-white transition">
+    <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 17.93V20h-2v-.07A8.001 8.001 0 0 1 4.07 13H6v-2H4.07A8.001 8.001 0 0 1 11 4.07V4h2v.07A8.001 8.001 0 0 1 19.93 11H18v2h1.93A8.001 8.001 0 0 1 13 19.93z" />
+    </svg>
+    {{ langService.getCurrentLang() === 'fr' ? 'ENG' : 'FR' }}
+  </button>
+</nav>

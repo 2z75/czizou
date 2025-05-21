@@ -3,11 +3,13 @@ import { Router, RouterOutlet, NavigationEnd, NavigationStart } from '@angular/r
 import { filter, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
+import { DeviceService } from './services/device.service';
 import gsap from 'gsap';
 
 @Component({
     selector: 'app-root',
-    imports: [CommonModule, RouterOutlet, NavbarComponent],
+    imports: [CommonModule, RouterOutlet, NavbarComponent, NavbarMobileComponent],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
@@ -17,14 +19,16 @@ export class AppComponent implements OnDestroy, AfterViewInit {
 
     title = 'czizou';
     showNavbar = true;
+    isMobile = false;
     private routerSubscription!: Subscription;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private deviceService: DeviceService) {
         this.routerSubscription = this.router.events
         .pipe(filter(event => event instanceof NavigationEnd))
         .subscribe((event: NavigationEnd) => {
             this.showNavbar = !['/'].includes(event.urlAfterRedirects);
-            });
+        });
+        this.isMobile = this.deviceService.isMobile()
     }
 
     ngAfterViewInit(): void {

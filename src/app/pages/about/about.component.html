@@ -1,17 +1,17 @@
-<section class="w-full h-full flex flex-col px-24 pt-32 text-white gap-12">
+<section class="w-full h-full flex flex-col px-6 pt-8 md:px-24 md:pt-32 text-white gap-12">
     <!-- Bloc profil -->
     <div class="flex items-start justify-between w-full">
         <div class="flex gap-6 items-center">
             <!-- Photo -->
-            <div class="relative w-20 h-20">
+            <div class="relative w-16 h-16 md:w-20 md:h-20">
                 <img src="assets/zizou/zizou.jpg" alt="Photo" class="w-full h-full object-cover object-top rounded-full border border-white"/>
                 <span class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border border-black"></span>
             </div>
             <div>
-                <h2 class="text-2xl font-semibold flex items-center">
+                <h1 class="text-xl md:text-2xl font-semibold flex items-center">
                     Zinedine Chader
-                    <img src="assets/icons/plus.svg" alt="PS Plus" class="w-5 h-5 ml-2" />
-                </h2>
+                    <img src="assets/icons/plus.svg" alt="PS Plus" class="w-4 h-4 md:w-5 md:h-5 ml-2" />
+                </h1>
                 <div class="text-sm opacity-70 italic mt-1">
                     <span class="translatable">{{ "about.subtext" | translate }}</span>
                 </div>
@@ -26,7 +26,7 @@
         </button>
     </nav>
 
-    <div class="mt-6">
+    <div class="md:mt-6">
         <!-- Intro -->
         <div #introRef [class.hidden]="currentTab !== 'intro'" class="flex flex-col justify-center items-center text-center min-h-[200px] gap-12">
             <!-- Phrase d’accroche -->
@@ -58,7 +58,6 @@
                 </a>
             </div>
         </div>
-
         <!-- Parcours -->
         <div  #parcoursRef [class.hidden]="currentTab !== 'parcours'" class="grid grid-cols-3 gap-6">
             <div *ngFor="let job of parcours" class="bg-white/5 p-6 rounded-lg flex flex-col items-center text-center gap-2 transition-all duration-300 hover:scale-105 hover:z-10 cursor-pointer">

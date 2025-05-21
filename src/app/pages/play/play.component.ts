@@ -14,7 +14,6 @@ import gsap from 'gsap';
 export class PlayComponent {
 
     @ViewChild('videoModal', { static: false }) videoModalRef!: ElementRef;
-
     currentTab: string = 'games';
 
     tabs = [

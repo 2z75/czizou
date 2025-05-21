@@ -1,16 +1,21 @@
-<section class="w-full h-screen flex flex-col px-6 md:px-24 pt-32 text-white">
-    <!-- Profil -->
-    <div class="flex items-start gap-6 mb-12">
-        <div class="relative w-20 h-20">
-            <img src="assets/zizou/ziizouu.png" alt="Photo" class="w-full h-full object-cover object-top rounded-full border border-white" />
-            <span class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border border-black"></span>
-        </div>
-        <div>
-            <h2 class="text-2xl font-semibold flex items-center">
-                Ziizouu rSc
-                <img src="assets/icons/plus.svg" alt="PS Plus" class="w-5 h-5 ml-2" />
-            </h2>
-            <div class="text-sm opacity-70 italic mt-1">ZiiZouu-rSc | {{ 'play.status.online' | translate }}</div>
+<section class="w-full h-screen flex flex-col px-6 pt-8 md:px-24  md:pt-32 text-white">
+    <!-- Bloc profil -->
+    <div class="flex items-start justify-between w-full mb-12">
+        <div class="flex gap-6 items-center">
+            <!-- Photo -->
+            <div class="relative w-16 h-16 md:w-20 md:h-20">
+                <img src="assets/zizou/ziizouu.png" alt="Photo" class="w-full h-full object-cover object-top rounded-full border border-white"/>
+                <span class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border border-black"></span>
+            </div>
+            <div>
+                <h1 class="text-xl md:text-2xl font-semibold flex items-center">
+                    Ziizouu rSc
+                    <img src="assets/icons/plus.svg" alt="PS Plus" class="w-4 h-4 md:w-5 md:h-5 ml-2" />
+                </h1>
+                <div class="text-sm opacity-70 italic mt-1">
+                    <span>ZiiZouu-rSc | {{ 'play.status.online' | translate }}</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -20,9 +25,10 @@
             {{ tab.label | translate }}
         </button>
     </nav>
+
     <!-- Miniatures -->
     <div [ngSwitch]="currentTab" class="flex-1 overflow-y-auto scrollbar-hide pr-1">
-        <div *ngSwitchCase="'games'" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 pb-12">
+        <div *ngSwitchCase="'games'" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 pb-32 md:pb-12">
             <div *ngFor="let video of games" class="aspect-square bg-white/5 rounded-lg overflow-hidden shadow-md transition group relative hover:rounded-lg" [ngClass]="{ 'cursor-pointer hover:scale-105': video.embedUrl }" (click)="openModal(video.embedUrl)">
                 <span *ngIf="!video.embedUrl" class="absolute top-2 left-2 z-10 text-xs bg-black/70 text-white px-2 py-1 rounded-full cursor-default">
                     {{ 'play.status.comingSoon' | translate }}
