@@ -1,0 +1,27 @@
+<section class="px-4 py-8 flex flex-col gap-6">
+    <div *ngFor="let project of projects" class="bg-white/5 rounded-2xl p-4 shadow-md flex flex-col gap-4">
+        <div class="flex gap-4">
+            <img [src]="project.image" [alt]="project.title" class="w-24 h-24 object-cover rounded-lg flex-shrink-0"/>
+            <div class="flex flex-col justify-center flex-grow">
+                <h1 class="text-white text-base">
+                    {{ project.title }}
+                </h1>
+                <div class="flex items-center gap-2 text-white text-sm opacity-70 mt-1">
+                    <span>{{ project.description | translate }}</span> 
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloc bas -->
+        <div class="border-t border-white/10 pt-3 flex justify-between items-center">
+            <div class="flex items-center gap-2 text-sm text-white">
+                <img src="assets/icons/trophy.svg" alt="trophy" class="w-10 h-10" />
+                <span>Technos</span>
+                <span class="text-xs text-white opacity-70 ml-2">
+                    {{ project.technos.join(' - ') }}
+                </span>
+            </div>
+            <span class="text-white/40 text-xl">›</span>
+        </div>
+    </div>
+</section>
