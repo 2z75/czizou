@@ -1,13 +1,13 @@
 <section class="w-full h-screen text-white flex flex-col justify-center items-center text-center relative px-6 md:px-20">
     <!-- Intro -->
-    <div *ngIf="isIntro" [ngClass]="{ 'animate-fadeIn': !hideIntro, 'animate-fadeOut': hideIntro }" class="flex flex-col items-center gap-6 text-center">
+    <div *ngIf="isIntro" [ngClass]="{ 'animate-fadeIn': !hideIntro, 'animate-fadeOut': hideIntro }" class="flex flex-col items-center md:gap-6 text-center">
         <p class="text-lg text-white tracking-wide animate-fadeInDelayed delay-700">
             Ce portfolio s’inspire librement de l’univers PlayStation. Il n’est ni affilié ni sponsorisé par Sony.
         </p>
     </div>
 
     <!-- Bouton -->
-    <div *ngIf="isButton" [ngClass]="{ 'animate-fadeIn': !hideButton, 'animate-fadeOut': hideButton }" class="flex flex-col items-center gap-10">
+    <div *ngIf="isButton" [ngClass]="{ 'animate-fadeIn': !hideButton, 'animate-fadeOut': hideButton }" class="flex flex-col items-center md:gap-10">
         <p class="text-lg text-white/80 tracking-wide">
             Appuyez sur le bouton <span class="font-playstationItalic text-white">CZ</span> pour démarrer
         </p>
@@ -15,7 +15,7 @@
     </div>
 
     <!-- Choix Profil -->
-    <div *ngIf="isProfile" [ngClass]="{ 'animate-fadeIn': !hideProfiles }" class="w-full h-full flex flex-col justify-center items-center gap-12">
+    <div *ngIf="isProfile" [ngClass]="{ 'animate-fadeIn': !hideProfiles }" class="w-full h-full flex flex-col justify-center items-center gap-8 md:gap-12">
         <div class="text-center">
             <h1 class="text-3xl font-light tracking-wide mb-2">
                 Bienvenue sur <span class="font-playstation text-white"> CZ</span>izou
