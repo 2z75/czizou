@@ -26,7 +26,7 @@
     </nav>
     <!-- Miniatures -->
     <div [ngSwitch]="currentTab" class="flex-1 overflow-y-auto scrollbar-hide pr-1">
-        <div *ngSwitchCase="'games'" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 pb-32 md:pb-12">
+        <div *ngSwitchCase="'games'" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 pb-48 md:pb-12">
             <div *ngFor="let video of games" class="aspect-square bg-white/5 rounded-lg overflow-hidden shadow-md transition group relative hover:rounded-lg" [ngClass]="{ 'cursor-pointer hover:scale-105': video.embedUrl }" (click)="openModal(video.embedUrl)">
                 <span *ngIf="!video.embedUrl" class="absolute top-2 left-2 z-10 text-xs bg-black/70 text-white px-2 py-1 rounded-full cursor-default">
                     {{ 'play.status.comingSoon' | translate }}

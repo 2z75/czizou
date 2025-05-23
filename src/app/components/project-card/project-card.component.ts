@@ -150,7 +150,6 @@ export class ProjectCardComponent implements AfterViewInit, OnChanges {
         this.scene = new Scene();
         this.camera = new PerspectiveCamera(35, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
         this.camera.position.z = 7;
-
         this.renderer = new WebGLRenderer({ canvas, alpha: true, antialias: true });
         this.renderer.setSize(canvas.clientWidth, canvas.clientHeight);
         this.renderer.setPixelRatio(window.devicePixelRatio);

@@ -1,50 +1,26 @@
 <nav class="fixed bottom-0 left-0 w-full z-50 flex flex-col items-center pointer-events-auto">
-  <!-- Icônes en haut -->
-  <div class="w-[130%] bg-[#1b1c1e]/80 backdrop-blur-md -mb-6 rounded-t-[50%] px-8 py-6 flex justify-around items-center shadow-xl text-white z-10">
-    
-    <!-- Projects -->
-    <a routerLink="/projects" routerLinkActive="text-white" #projectsRla="routerLinkActive"
-       class="relative transition">
-      <img src="assets/icons/projets.svg" class="w-7 h-7" />
-      <div *ngIf="projectsRla.isActive" class="absolute inset-0 rounded-full blur-md bg-blue-500/40 pointer-events-none"></div>
-    </a>
-
-    <!-- About -->
-    <a routerLink="/about" routerLinkActive="text-white" #aboutRla="routerLinkActive"
-       class="relative transition">
-      <img src="assets/icons/message.svg" class="w-7 h-7" />
-      <div *ngIf="aboutRla.isActive" class="absolute inset-0 rounded-full blur-md bg-blue-500/40 pointer-events-none"></div>
-    </a>
-
-    <!-- Play -->
-    <a routerLink="/play" routerLinkActive="text-white" #playRla="routerLinkActive"
-       class="relative transition">
-      <img src="assets/icons/controller.svg" class="w-7 h-7" />
-      <div *ngIf="playRla.isActive" class="absolute inset-0 rounded-full blur-md bg-blue-500/40 pointer-events-none"></div>
-    </a>
-
-    <!-- Langue -->
-    <button (click)="switchLang()" class="transition">
-      <img src="assets/icons/settings.svg" class="w-7 h-7" />
-    </button>
-
-    <!-- CV -->
-    <a href="/assets/cv_cz.pdf" download class="transition">
-      <img src="assets/icons/download.svg" class="w-7 h-7" />
-    </a>
-  </div>
-
-  <!-- Label bas -->
-  <div class="w-full bg-[#18191b] text-white text-center py-3 text-sm tracking-wide rounded-t-[40%] z-20 relative">
-    <!-- Traduction dynamique du chemin actif -->
-    <ng-container *ngIf="projectsRla.isActive">
-      {{ 'navbar.projects' | translate }}
-    </ng-container>
-    <ng-container *ngIf="aboutRla.isActive">
-      {{ 'navbar.about' | translate }}
-    </ng-container>
-    <ng-container *ngIf="playRla.isActive">
-      {{ 'navbar.play' | translate }}
-    </ng-container>
-  </div>
+    <div class="w-[130%] bg-[#1b1c1e]/80 backdrop-blur-md -mb-5 rounded-t-[50%] px-8 py-6 flex justify-evenly items-start shadow-xl text-white z-10">
+        <a [routerLink]="['/projects']" routerLinkActive="active-icon" class="transition mt-2 relative">
+            <div class="icon-glow"></div>
+            <img src="assets/icons/projets.svg" class="w-7 h-7 z-10 relative" />
+        </a>
+        <a [routerLink]="['/about']" routerLinkActive="active-icon" class="transition mt-1 relative">
+            <div class="icon-glow"></div>
+            <img src="assets/icons/message.svg" class="w-7 h-7 z-10 relative" />
+        </a> 
+        <a [routerLink]="['/play']" routerLinkActive="active-icon" class="transition mt-0 relative">
+            <div class="icon-glow"></div>
+            <img src="assets/icons/controller.svg" class="w-7 h-7 z-10 relative" />
+        </a>
+        <button (click)="switchLang()" class="transition mt-1 relative">
+            <img src="assets/icons/settings.svg" alt="Lang switch" class="w-7 h-7" />
+        </button>
+        <a href="/assets/cv_cz.pdf" download class="transition mt-2 relative">
+            <img src="assets/icons/download.svg" class="w-7 h-7" />
+        </a>
+    </div>
+    <!-- Partie Bas -->
+    <div class="w-full bg-[#18191b] text-white text-center py-3 text-sm tracking-wide rounded-t-[40%] z-20">
+        {{ 'navbar.' + currentRoute | translate }}
+    </div>
 </nav>

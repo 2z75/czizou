@@ -3,7 +3,6 @@
         <ng-container *ngIf="isMobile; else desktopView">
             <app-project-card-mobile [projects]="projects"></app-project-card-mobile>
         </ng-container>
-
         <ng-template #desktopView>
             <app-project-card
                 [projects]="projects"
