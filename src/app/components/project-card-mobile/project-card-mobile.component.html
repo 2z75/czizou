@@ -1,5 +1,5 @@
-<section class="px-4 py-8 flex flex-col gap-6">
-    <div *ngFor="let project of projects" class="bg-white/5 rounded-2xl p-4 shadow-md flex flex-col gap-4">
+<section class="h-screen overflow-y-auto px-4 py-8 pb-32 flex flex-col gap-6 scrollbar-hide">
+    <div *ngFor="let project of projects" class="bg-neutral-800 rounded-2xl p-4 shadow-md flex flex-col gap-4 ">
         <div class="flex gap-4">
             <img [src]="project.image" [alt]="project.title" class="w-24 h-24 object-cover rounded-lg flex-shrink-0"/>
             <div class="flex flex-col justify-center flex-grow">
@@ -11,17 +11,20 @@
                 </div>
             </div>
         </div>
-
         <!-- Bloc bas -->
-        <div class="border-t border-white/10 pt-3 flex justify-between items-center">
-            <div class="flex items-center gap-2 text-sm text-white">
-                <img src="assets/icons/trophy.svg" alt="trophy" class="w-10 h-10" />
-                <span>Technos</span>
-                <span class="text-xs text-white opacity-70 ml-2">
-                    {{ project.technos.join(' - ') }}
-                </span>
+        <div class="border-t border-white/10 pt-3 flex justify-between items-start">
+            <div class="flex gap-3">
+                <img src="assets/icons/trophy.svg" alt="trophy" class="w-8 h-8 mt-1.5" />
+                <div class="flex flex-col">
+                    <span class="text-white text-l">Technos</span>
+                    <span class=" text-white text-sm opacity-70">
+                        {{ project.technos.join(' - ') }}
+                    </span>
+                </div>
             </div>
-            <span class="text-white/40 text-xl">›</span>
+            <a [href]="project.link" target="_blank" rel="noopener noreferrer">
+                <img src="assets/icons/chevron.svg" alt="go to" class="w-5 h-5 mt-3" />
+            </a>
         </div>
     </div>
 </section>

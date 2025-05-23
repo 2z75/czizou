@@ -11,7 +11,7 @@ export const projectData: Project[] = [
         modelPath: 'assets/models/playstation.glb',
         scale: 0.007,
         centered: false,
-        technos: ['Angular', 'GSAP', 'Tailwind', 'ThreeJS'],
+        technos: ['Angular', 'Tailwind', 'ThreeJS'],
         fontClass: 'font-playstation',
         textColor: 'text-black',
         link: 'https://github.com/2z75/czizou.git'
@@ -25,7 +25,7 @@ export const projectData: Project[] = [
         modelPath: 'assets/models/bag.glb',
         scale: 3,
         centered: false,
-        technos: ['Java', 'Angular', 'MySQL', 'Docker'],
+        technos: ['Java', 'Angular', 'SQL', 'Docker'],
         fontClass: 'font-montserrat',
         textColor: 'text-white',
         link: 'https://github.com/Onderito/tripgather-back.git'
@@ -40,8 +40,8 @@ export const projectData: Project[] = [
         modelPath: 'assets/models/camera.glb',
         scale: 1.3,
         centered: true,
-        technos: ['Wordpress', 'Javascript', 'PHP', 'MySQL'],
-        fontClass: 'font-gotham',
+        technos: ['Wordpress', 'JS', 'PHP', 'SQL'],
+        fontClass: '',
         textColor: 'text-white',
         link: 'https://www.arekipabythekub.com/'
     },
@@ -54,7 +54,7 @@ export const projectData: Project[] = [
         modelPath: 'assets/models/notebook.glb',
         scale: 8,
         centered: true,
-        technos: ['Symfony', 'JavaScript', 'MySQL'],
+        technos: ['Symfony', 'JS', 'SQL'],
         fontClass: 'font-quantico',
         textColor: 'text-white',
         link: 'https://github.com/WildCodeSchool-2023-09/php-paris-p3-originsdigital.git'

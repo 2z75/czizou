@@ -18,14 +18,12 @@
             </div>
         </div>
     </div>
-
     <!-- Onglets -->
     <nav class="flex gap-12 text-lg text-white/70 pb-2 mb-4">
         <button *ngFor="let tab of tabs" (click)="currentTab = tab.key" [ngClass]="{ 'text-white': currentTab === tab.key, 'hover:text-white': true, 'transition': true }">
             {{ tab.label | translate }}
         </button>
     </nav>
-
     <!-- Miniatures -->
     <div [ngSwitch]="currentTab" class="flex-1 overflow-y-auto scrollbar-hide pr-1">
         <div *ngSwitchCase="'games'" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 pb-32 md:pb-12">

@@ -14,12 +14,7 @@
     font-weight: normal;
     font-style: normal;
 }
-@font-face {
-    font-family: 'Gotham';
-    src: url('/assets/fonts/gotham.eot') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+
 
 
 
@@ -34,9 +29,10 @@
 }
 html, body, app-root {
     @apply w-screen h-screen m-0 p-0 overflow-hidden;
-    background-color: #11121b; // 🎮 Fond PS5
-
+    background-color: #121315; // 🎮 Fond PS5
 }
+
+
 
 /* styles.scss */
 .scrollbar-hide {

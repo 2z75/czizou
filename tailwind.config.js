@@ -62,7 +62,6 @@ module.exports = {
                 playstationItalic: ['PlayStationItalic', 'sans-serif'],
                 sans: ['Open Sans', 'sans-serif'],
                 quantico: ['Quantico', 'sans-serif'],
-                gotham: ['Gotham', 'sans-serif'],   
             }
         }
     },
