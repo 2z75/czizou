@@ -25,9 +25,13 @@ export class AppComponent implements OnDestroy, AfterViewInit {
     constructor(private router: Router, private deviceService: DeviceService) {
         this.routerSubscription = this.router.events
         .pipe(filter(event => event instanceof NavigationEnd))
-        .subscribe((event: NavigationEnd) => {
-            this.showNavbar = !['/'].includes(event.urlAfterRedirects);
+        .subscribe(() => {
+            const hiddenRoutes = ['/', '/404'];
+            const currentUrl = this.router.url;
+            const isNotFound = !this.router.config.some(route => route.path && currentUrl.startsWith(`/${route.path}`));
+            this.showNavbar = !hiddenRoutes.includes(currentUrl) && !isNotFound;
         });
+
         this.isMobile = this.deviceService.isMobile()
     }
 
