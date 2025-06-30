@@ -22,12 +22,12 @@ export class PlayComponent {
 
     games = [
         { thumbnail: 'assets/highlights/r6.jpg', embedUrl: '' },
-        { thumbnail: 'assets/highlights/fc25.jpg', embedUrl: 'https://www.youtube.com/embed/dmwM516cSpY?autoplay=1&rel=0' },
-        { thumbnail: 'assets/highlights/warzone.jpg', embedUrl: '' },
         { thumbnail: 'assets/highlights/callOf.jpg', embedUrl: '' },
+        { thumbnail: 'assets/highlights/warzone.jpg', embedUrl: '' },
+        { thumbnail: 'assets/highlights/fc25.jpg', embedUrl: 'https://www.youtube.com/embed/dmwM516cSpY?autoplay=1&rel=0' },
+        { thumbnail: 'assets/highlights/bleach.jpg', embedUrl: '' },
         { thumbnail: 'assets/highlights/splitFiction.jpg', embedUrl: '' },
         { thumbnail: 'assets/highlights/ufc5.jpg', embedUrl: '' },
-        { thumbnail: 'assets/highlights/bleach.jpg', embedUrl: '' },
         { thumbnail: 'assets/highlights/grBreakpoint.jpg', embedUrl: '' }
     ];
 
